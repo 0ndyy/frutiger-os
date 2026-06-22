@@ -51,44 +51,115 @@ body {
 }
 
 .welcome {
-    /* 1. Perfect Screen Centering */
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    
-    /* Dimensions */
     width: 550px;
-    padding: 6px 9px 9px 9px;
+    padding: 4px 8px 8px 8px; 
     box-sizing: border-box;
     
-    /* 2. Outer Vista/Aero Glass Frame Styling */
-    background: linear-gradient(135deg, rgba(235, 245, 255, 0.4) 0%, rgba(180, 210, 235, 0.25) 100%);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: linear-gradient(135deg, rgba(240, 248, 255, 0.45) 0%, rgba(185, 215, 240, 0.3) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     
-    /* Complex borders and inner reflections matching image_9efd46.png */
-    border: 1px solid rgba(255, 255, 255, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.55);
     border-radius: 8px;
     box-shadow: 
-        0 15px 30px rgba(0, 0, 0, 0.3),            /* Deep drop shadow */
-        inset 0 1px 1px rgba(255, 255, 255, 0.6),   /* Crisp top highlight */
-        inset 0 -1px 1px rgba(0, 0, 0, 0.1);
+        0 20px 40px rgba(0, 0, 0, 0.35), 
+        inset 0 1px 1px rgba(255, 255, 255, 0.7);
     
-    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    font-family: 'Segoe UI', -apple-system, sans-serif;
     z-index: 999;
+    user-select: none; 
 }
 
-/* Small, glowing window title outside the main container box */
+.dragable-holder {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 26px;
+    cursor: move; 
+    padding: 0 2px;
+}
+
 .aero-title {
     font-size: 12px;
-    color: #1e293b;
-    margin-bottom: 5px;
-    padding-left: 5px;
-    text-shadow: 0 0 5px #fff, 0 0 8px #fff; /* Vista glowing text effect */
+    color: #1a2536;
+    text-shadow: 0 0 6px #fff, 0 0 10px #fff;
+    font-weight: 500;
 }
 
-/* Inner white window container */
+.aero-controls {
+    display: flex;
+    gap: 1px;
+}
+
+.control-btn {
+    position: relative;
+    width: 28px;
+    height: 17px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 2px;
+    cursor: pointer;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    
+    background: linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.05) 49%, rgba(0,0,0,0.02) 50%, rgba(255,255,255,0.1) 100%);
+}
+
+.control-btn:hover {
+    background: linear-gradient(to bottom, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.2) 49%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.4) 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.min::before {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 9px;
+    width: 8px;
+    height: 2px;
+    background: #444;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.5);
+}
+
+.max::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 9px;
+    width: 7px;
+    height: 6px;
+    border: 1px solid #444;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.5);
+}
+
+.control-btn.close {
+    width: 44px; 
+    border-color: rgba(140, 40, 40, 0.5);
+    background: linear-gradient(to bottom, rgba(240, 110, 110, 0.4) 0%, rgba(210, 60, 60, 0.3) 49%, rgba(180, 20, 20, 0.4) 50%, rgba(200, 40, 40, 0.5) 100%);
+}
+
+.control-btn.close:hover {
+    border-color: rgba(100, 10, 10, 0.8);
+    background: linear-gradient(to bottom, #ffa0a0 0%, #f04040 49%, #cc0000 50%, #e61a1a 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 0 8px rgba(230, 26, 26, 0.6);
+}
+
+.close::before, .close::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 21px;
+    width: 2px;
+    height: 8px;
+    background: white;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+}
+.close::before { transform: rotate(45deg); }
+.close::after { transform: rotate(-45deg); }
+
+
 .window-body {
     background: rgba(255, 255, 255, 0.88);
     border: 1px solid rgba(0, 0, 0, 0.35);
@@ -97,22 +168,14 @@ body {
     box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8);
 }
 
-/* THE SIGNATURE CYAN GLOSS BANNER (From image_9efd46.png) */
+
 .aero-banner {
     border: 1px solid rgba(0, 0, 0, 0.45);
     border-radius: 5px;
     padding: 12px 18px;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
     overflow: hidden;
-    
-    /* High-contrast sharp reflection gradient split right down the center */
-    background: linear-gradient(
-        to bottom,
-        #4ecce0 0%,
-        #1baac4 49.9%, 
-        #007999 50%, 
-        #005a73 100%
-    );
+    background: linear-gradient(to bottom, #4ecce0 0%, #1baac4 49.9%, #007999 50%, #005a73 100%);
 }
 
 .aero-banner h1 {
@@ -124,7 +187,6 @@ body {
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
 }
 
-/* Content Layout styling */
 .window-content {
     padding: 20px 10px 10px 10px;
 }
@@ -141,7 +203,6 @@ body {
     gap: 10px;
 }
 
-/* GLOSSY AERO PILL BUTTONS */
 .aero-btn {
     border: 1px solid rgba(0, 0, 0, 0.45);
     border-radius: 5px;
@@ -149,23 +210,11 @@ body {
     padding: 6px 16px;
     font-size: 13px;
     cursor: pointer;
-    box-shadow: 
-        inset 0 1px 0 rgba(255, 255, 255, 0.4), 
-        0 2px 4px rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 2px 4px rgba(0, 0, 0, 0.15);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
     transition: filter 0.15s ease;
 }
 
-.aero-btn:hover {
-    filter: brightness(1.1);
-}
-
-/* Green Gloss Button Styling */
-.btn-green {
-    background: linear-gradient(to bottom, #7fe58c 0%, #4cb85a 49.9%, #1e872c 50%, #2f9e3d 100%);
-}
-
-/* Blue Gloss Button Styling */
-.btn-blue {
-    background: linear-gradient(to bottom, #5ba8df 0%, #2d7cb5 49.9%, #0c4e7d 50%, #1b6da5 100%);
-}
+.aero-btn:hover { filter: brightness(1.1); }
+.btn-green { background: linear-gradient(to bottom, #7fe58c 0%, #4cb85a 49.9%, #1e872c 50%, #2f9e3d 100%); }
+.btn-blue { background: linear-gradient(to bottom, #5ba8df 0%, #2d7cb5 49.9%, #0c4e7d 50%, #1b6da5 100%); }
