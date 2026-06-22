@@ -3,10 +3,44 @@ body {
     padding: 0;
 }
 
-.menu-bar{
+.menu-bar {
     display: flex; 
-    backdrop-filter: blur(10px); 
-    background-color: rgba(0, 0, 0, 0.25); 
-    color: #fff; 
     justify-content: space-between;
+    align-items: center; 
+    color: #fff;
+    
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 0 8px rgba(0, 225, 255, 0.6);
+    font-family: 'Segoe UI', -apple-system, sans-serif; /* Era-appropriate fonts */
+    font-weight: 500;
+    
+    border-top: solid 1px rgba(255, 255, 255, 0.6);
+    border-bottom: solid 1px rgba(0, 180, 216, 0.4);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 4px 10px rgba(0, 0, 0, 0.15);
+    
+    position: relative; 
+    overflow: hidden; 
+    height: 30px;
+}
+
+.menu-bar > p {
+    position: relative;
+    z-index: 10; 
+    margin: 0 16px; 
+}
+
+.menu-bar > #blur-overlay:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(
+      to bottom, 
+        rgba(255, 255, 255, 0.45) 0%,     
+        rgba(255, 255, 255, 0.15) 49.9%,   
+        rgba(0, 212, 255, 0.25) 50%,       
+        rgba(0, 110, 230, 0.15) 100%     
+    );
+    content: '';
+    z-index: 3;
 }
