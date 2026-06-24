@@ -80,30 +80,6 @@ body {
     text-shadow: 0px 1px 3px rgba(0, 0, 0, 1);
 }
 
-.welcome {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 550px;
-    padding: 4px 8px 8px 8px; 
-    box-sizing: border-box;
-    
-    background: linear-gradient(135deg, rgba(240, 248, 255, 0.45) 0%, rgba(185, 215, 240, 0.3) 100%);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    
-    border: 1px solid rgba(255, 255, 255, 0.55);
-    border-radius: 8px;
-    box-shadow: 
-        0 20px 40px rgba(0, 0, 0, 0.35), 
-        inset 0 1px 1px rgba(255, 255, 255, 0.7);
-    
-    font-family: 'Segoe UI', -apple-system, sans-serif;
-    z-index: 999;
-    user-select: none; 
-}
-
 .dragable-holder {
     display: flex;
     justify-content: space-between;
@@ -248,3 +224,36 @@ body {
 .aero-btn:hover { filter: brightness(1.1); }
 .btn-green { background: linear-gradient(to bottom, #7fe58c 0%, #4cb85a 49.9%, #1e872c 50%, #2f9e3d 100%); }
 .btn-blue { background: linear-gradient(to bottom, #5ba8df 0%, #2d7cb5 49.9%, #0c4e7d 50%, #1b6da5 100%); }
+
+
+.window {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 550px;
+    padding: 4px 8px 8px 8px; 
+    box-sizing: border-box;
+    
+    background: linear-gradient(135deg, rgba(240, 248, 255, 0.45) 0%, rgba(185, 215, 240, 0.3) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 8px;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.35), 
+        inset 0 1px 1px rgba(255, 255, 255, 0.7);
+    
+    font-family: 'Segoe UI', -apple-system, sans-serif;
+    z-index: 999;
+    user-select: none; 
+}
+
+.welcome {
+    width: 300px;
+}
+
+.notepad {
+ 
+}

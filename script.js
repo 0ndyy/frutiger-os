@@ -67,10 +67,10 @@ function initializeWindowButtons(windowElement){
     const btnClose = windowElement.querySelector(".close");
 
     btnMin.addEventListener("click", function() {
-        closeWindow(windowElement);
+        minWindow(windowElement);
     });
     btnMax.addEventListener("click", function() {
-        //add maximize function
+        maxWindow(windowElement);
     });
     btnClose.addEventListener("click", function() {
         closeWindow(windowElement);
@@ -78,10 +78,40 @@ function initializeWindowButtons(windowElement){
 }
 document.querySelectorAll(".window").forEach(initializeWindowButtons);
 
+function handleWindow(queryClass, action) {
+    const queriedElement = document.querySelector(queryClass);
+    
+    // Safety check: if the element doesn't exist, stop here
+    if (!queriedElement) return; 
+
+    switch (action) {
+        case 'open':
+            openWindow(queriedElement);
+            break;
+        case 'close':
+            closeWindow(queriedElement);
+            break;
+        case 'min':
+            minWindow(queriedElement);
+            break;
+        case 'max':
+            maxWindow(queriedElement);
+            break;
+    }
+}
+
 function closeWindow(element) {
   element.style.display = "none"
 }
 
+function minWindow(element) {
+  element.style.display = "none"
+}
+
+function maxWindow(element) {
+  //todo
+}
+
 function openWindow(element) {
-  element.style.display = "flex"
+  element.style.display = "block"
 }
