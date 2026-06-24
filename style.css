@@ -50,6 +50,36 @@ body {
         linear-gradient(to bottom in oklch, rgba(158, 173, 188, 0.4) 60%, rgba(255, 255, 255, 0.25));
 }
 
+.desktopApp {
+    display: block;
+    background: transparent;
+    border: 1px solid transparent;
+    cursor: pointer;
+    font: inherit;
+    text-align: center;
+    padding: 2px 15px 0px 15px;
+    margin: 14px 1px 16px 1px;
+    width: fit-content;
+}
+
+/* The Skeuomorphic Vista Hover State */
+.desktopApp:hover {
+    border: 1px solid rgba(135, 206, 250, 0.8);
+    background: linear-gradient(
+        to bottom,
+        rgba(193, 230, 255, 0.5) 0%, 
+        rgba(135, 206, 250, 0.3) 100%
+    );
+    box-shadow: 0 0 12px rgba(30, 144, 255, 0.6);
+}
+
+/* Ensure the text has a distinct shadow for visibility on the blue background */
+.desktopApp p {
+    margin: 0px;
+    color: #fff;
+    text-shadow: 0px 1px 3px rgba(0, 0, 0, 1);
+}
+
 .welcome {
     position: absolute;
     top: 50%;
