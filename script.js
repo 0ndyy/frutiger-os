@@ -16,7 +16,6 @@ function initializeWindowDragging(windowElement) {
     let initialX = 0, initialY = 0;
     let currentX = 0, currentY = 0;
 
-    // Look specifically INSIDE this single window for its drag handle
     const dragHandle = windowElement.querySelector(".dragable-holder");
 
     if (dragHandle) {
@@ -29,25 +28,22 @@ function initializeWindowDragging(windowElement) {
         e = e || window.event;
         e.preventDefault();
         
-        // Track original mouse coordinates
         initialX = e.clientX;
         initialY = e.clientY;
         
         document.onmouseup = stopDragging;
-        document.onmousemove = moveWindow; // Fixed: points to the unique moving function
+        document.onmousemove = moveWindow; 
     }
 
-    function moveWindow(e) { // Renamed from dragElement to prevent shadowing bugs
+    function moveWindow(e) {
         e = e || window.event;
         e.preventDefault();
         
-        // Calculate movement deltas
         currentX = initialX - e.clientX;
         currentY = initialY - e.clientY;
         initialX = e.clientX;
         initialY = e.clientY;
         
-        // Move the window relative to its current offset
         windowElement.style.top = (windowElement.offsetTop - currentY) + "px";
         windowElement.style.left = (windowElement.offsetLeft - currentX) + "px";
     }
@@ -81,7 +77,6 @@ document.querySelectorAll(".window").forEach(initializeWindowButtons);
 function handleWindow(queryClass, action) {
     const queriedElement = document.querySelector(queryClass);
     
-    // Safety check: if the element doesn't exist, stop here
     if (!queriedElement) return; 
 
     switch (action) {
@@ -101,7 +96,11 @@ function handleWindow(queryClass, action) {
 }
 
 function closeWindow(element) {
-  element.style.display = "none"
+  element.style.display = "none";
+  element.style.top = "50%";
+  element.style.left = "50%";
+  element.style.transform = "translate(-50%, -50%)";
+  //ADD WIDHT AND HEIGHT BACK
 }
 
 function minWindow(element) {
@@ -109,7 +108,8 @@ function minWindow(element) {
 }
 
 function maxWindow(element) {
-  //todo
+  element.style.width = "100%";
+  element.style.height = "100%";
 }
 
 function openWindow(element) {
