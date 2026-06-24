@@ -1,4 +1,4 @@
-// CLOCK
+//------------------CLOCK------------------
 function updateClock() {
     document.querySelector("#timeElement").innerHTML = new Date().toLocaleString("en-US", {
         month: 'short', day: '2-digit', hour: "2-digit", minute: "2-digit", hourCycle: "h23"
@@ -10,7 +10,8 @@ function updateClock() {
 updateClock();
 
 
-// MULTI-WINDOW DRAGGING ENGINE
+//------------------WINDOW LOGIC------------------
+// -----MULTI-WINDOW DRAGGING ENGINE-----
 function initializeWindowDragging(windowElement) {
     let initialX = 0, initialY = 0;
     let currentX = 0, currentY = 0;
@@ -56,6 +57,31 @@ function initializeWindowDragging(windowElement) {
         document.onmousemove = null;
     }
 }
-
-// Automatically scan the DOM and activate ALL windows at once
 document.querySelectorAll(".window").forEach(initializeWindowDragging);
+
+
+//-----CLOSING, MINIMZING, OPENING WINDOWS-----
+function initializeWindowButtons(windowElement){
+    const btnMin = windowElement.querySelector(".min");
+    const btnMax = windowElement.querySelector(".max");
+    const btnClose = windowElement.querySelector(".close");
+
+    btnMin.addEventListener("click", function() {
+        closeWindow(windowElement);
+    });
+    btnMax.addEventListener("click", function() {
+        //add maximize function
+    });
+    btnClose.addEventListener("click", function() {
+        closeWindow(windowElement);
+    });
+}
+document.querySelectorAll(".window").forEach(initializeWindowButtons);
+
+function closeWindow(element) {
+  element.style.display = "none"
+}
+
+function openWindow(element) {
+  element.style.display = "flex"
+}
