@@ -55,6 +55,21 @@ function initializeWindowDragging(windowElement) {
 }
 document.querySelectorAll(".window").forEach(initializeWindowDragging);
 
+//-----WINDOW Z INDEX-----
+var biggestIndex = 1;
+
+function addWindowTapHandling(element) {
+  element.addEventListener("mousedown", () =>
+    handleWindowTap(element)
+  )
+}
+
+function handleWindowTap(element) {
+  biggestIndex++;  // Increment biggestIndex by 1
+  element.style.zIndex = biggestIndex;
+}
+
+document.querySelectorAll(".window").forEach(addWindowTapHandling);
 
 //-----CLOSING, MINIMZING, OPENING WINDOWS-----
 function initializeWindowButtons(windowElement){
@@ -90,7 +105,7 @@ function handleWindow(queryClass, action) {
             minWindow(queriedElement);
             break;
         case 'max':
-            maxWindow(queriedElement);
+            maxWindow(queriedElement)
             break;
     }
 }
@@ -109,13 +124,20 @@ function minWindow(element) {
 }
 
 function maxWindow(element) {
-    element.style.width = "100%";
-    element.style.height = "100%";
     element.style.top = "50%";
     element.style.left = "50%";
     element.style.transform = "translate(-50%, -50%)";
+    if (element.style.width === "100%") {
+        element.style.width = "";
+        element.style.height = "";
+    } else {
+        element.style.width = "100%";
+        element.style.height = "100%";
+    }
 }
 
 function openWindow(element) {
     element.style.display = "block"
+    biggestIndex++; 
+    element.style.zIndex = biggestIndex;
 }
