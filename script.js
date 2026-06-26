@@ -96,22 +96,26 @@ function handleWindow(queryClass, action) {
 }
 
 function closeWindow(element) {
-  element.style.display = "none";
-  element.style.top = "50%";
-  element.style.left = "50%";
-  element.style.transform = "translate(-50%, -50%)";
-  //ADD WIDHT AND HEIGHT BACK
+    element.style.display = "none";
+    element.style.top = "50%";
+    element.style.left = "50%";
+    element.style.transform = "translate(-50%, -50%)";
+    element.style.width = "";
+    element.style.height = "";
 }
 
 function minWindow(element) {
-  element.style.display = "none"
+    element.style.display = "none"
 }
 
 function maxWindow(element) {
-  element.style.width = "100%";
-  element.style.height = "100%";
+    element.style.width = "100%";
+    element.style.height = "100%";
+    element.style.top = "50%";
+    element.style.left = "50%";
+    element.style.transform = "translate(-50%, -50%)";
 }
 
 function openWindow(element) {
-  element.style.display = "block"
+    element.style.display = "block"
 }
