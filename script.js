@@ -137,7 +137,7 @@ function maxWindow(element) {
 }
 
 function openWindow(element) {
-    element.style.display = "block"
+    element.style.display = "flex"
     biggestIndex++; 
     element.style.zIndex = biggestIndex;
 }
