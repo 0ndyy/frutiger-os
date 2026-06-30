@@ -28,7 +28,7 @@
 
     <!------------WINDOWS------------>
     <!--WINDOW WELCOME-->
-    <div class="window welcome">
+    <div class="window welcome" style="display:none;">
         <div class="dragable-holder">
             <div class="aero-title">Welcome</div>
             <div class="aero-controls">
@@ -52,7 +52,7 @@
     </div>
     
     <!--NOTEPAD WINDOW-->
-    <div class="window notepad" style="display:none">
+    <div class="window notepad" style="display:flex">
         <div class="dragable-holder">
             <div class="aero-title">Notepad</div>
             <div class="aero-controls">
@@ -62,14 +62,30 @@
             </div>
         </div>
         
-        <div class="window-body">
-            <div class="window-content">
-                <p>....</p>
-            </div>
+        <div class="window-topbar blur-overlay" style="border-radius:5px 5px 0px 0px;">
+            <button class="menu-item">Save</button>
+            <button class="menu-item">Format</button>
+            <button class="menu-item">Revert</button>
+            <button class="menu-item">Delete</button>
         </div>
+
+        <div class="window-body" style="border-radius:0px 0px 5px 5px;">
+                <div class="window-main">
+                    <div class="window-bar-left" style="width: 180px;">
+                        <h4 style="margin: 0 0 8px 0; font-size: 13px; color: #1e293b;     border-bottom: 1px solid rgba(0, 0, 0, 0.15);">Recent</h4>
+                        <p style="font-size: 11px; color: #64748b;">list of saved notes</p>
+                    </div>
+
+                    <div class="window-content">
+                        <p>note content</p>
+                    </div>
+                </div>
+
+            </div>
     </div>
 
     <script src="script.js"></script>
+    <script src="js/note-app.js"></script>
 </body>
 
 </html>
