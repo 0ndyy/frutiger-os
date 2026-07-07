@@ -141,3 +141,99 @@ function openWindow(element) {
     biggestIndex++; 
     element.style.zIndex = biggestIndex;
 }
+
+//------------------TASKBAR ENGINE------------------
+function updateTaskbar() {
+    const container = document.querySelector("#taskbar-items-container");
+    container.innerHTML = "";
+
+    document.querySelectorAll(".window").forEach(win => {
+        if (win.style.display === "none" && win.dataset.closed === "true") {
+            return;
+        }
+        
+        if (win.style.display === "none" && !win.dataset.state) {
+            return;
+        }
+
+        const title = win.querySelector(".aero-title")?.innerText || "Window";
+        const isMinimized = win.style.display === "none";
+        const isFocused = !isMinimized && parseInt(win.style.zIndex || 0) === biggestIndex;
+        
+        let iconSrc = "./res/icons/app/welcome.ico";
+        if (win.classList.contains("notepad")) iconSrc = "./res/icons/app/notepad.webp";
+
+        const btn = document.createElement("button");
+        btn.className = "taskbar-item";
+        
+        if (isFocused) {
+            btn.classList.add("active");
+        }
+
+        if (!isMinimized) {
+            btn.classList.add("expanded");
+            btn.innerHTML = `<img src="${iconSrc}"><span>${title}</span>`;
+        } else {
+            btn.innerHTML = `<img src="${iconSrc}">`;
+        }
+        
+        btn.onclick = () => {
+            if (isMinimized) {
+                openWindow(win);
+            } else if (isFocused) {
+                minWindow(win);
+            } else {
+                handleWindowTap(win);
+                updateTaskbar();
+            }
+        };
+
+        container.appendChild(btn);
+    });
+}
+
+function handleWindowTap(element) {
+    biggestIndex++;
+    element.style.zIndex = biggestIndex;
+    updateTaskbar();
+}
+
+function closeWindow(element) {
+    element.style.display = "none";
+    element.dataset.closed = "true"; 
+    element.style.top = "50%";
+    element.style.left = "50%";
+    element.style.transform = "translate(-50%, -50%)";
+    element.style.width = "";
+    element.style.height = "";
+    updateTaskbar();
+}
+
+function minWindow(element) {
+    element.style.display = "none";
+    updateTaskbar();
+}
+
+function maxWindow(element) {
+    element.style.top = "50%";
+    element.style.left = "50%";
+    element.style.transform = "translate(-50%, -50%)";
+    if (element.style.width === "100%") {
+        element.style.width = "";
+        element.style.height = "";
+    } else {
+        element.style.width = "100%";
+        element.style.height = "100%";
+    }
+}
+
+function openWindow(element) {
+    element.style.display = "flex";
+    element.dataset.closed = "false";
+    element.dataset.state = "active";
+    biggestIndex++; 
+    element.style.zIndex = biggestIndex;
+    updateTaskbar();
+}
+
+updateTaskbar();
