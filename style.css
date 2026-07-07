@@ -31,8 +31,6 @@ body {
     text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 }
 
-/* --- TASKBAR DESIGN --- */
-
 #taskbar-blur-overlay {
     position: absolute;
     top: 0; right: 0; bottom: 0; left: 0;
@@ -180,7 +178,6 @@ body {
     width: fit-content;
 }
 
-/* The Skeuomorphic Vista Hover State */
 .desktopApp:hover {
     border: 1px solid rgba(135, 206, 250, 0.8);
     background: linear-gradient(
@@ -191,7 +188,6 @@ body {
     box-shadow: 0 0 12px rgba(30, 144, 255, 0.6);
 }
 
-/* Ensure the text has a distinct shadow for visibility on the blue background */
 .desktopApp p {
     margin: 0px;
     color: #fff;
@@ -298,8 +294,8 @@ body {
 
 .window-main {
     display: flex;
-    flex-direction: row; /* Aligns content and sidebars side-by-side */
-    flex: 1;            /* Fills all remaining vertical space */
+    flex-direction: row; 
+    flex: 1;            
     overflow: hidden;
 }
 
@@ -356,7 +352,6 @@ body {
     overflow-y: auto; 
 }
 
-/* The Left Sidebar Component */
 .window-bar-left {
     flex-shrink: 0; 
     height: 100%;
