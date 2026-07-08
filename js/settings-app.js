@@ -14,18 +14,3 @@ function switchSettingsSection(sectionId) {
         eventTarget.classList.add('active');
     }
 }
-
-const originalUpdateTaskbar = updateTaskbar;
-updateTaskbar = function() {
-    originalUpdateTaskbar();
-    
-    document.querySelectorAll(".window").forEach(win => {
-        if (win.classList.contains("settings")) {
-            const container = document.querySelector("#taskbar-items-container");
-            const btn = Array.from(container.querySelectorAll(".taskbar-item")).find(b => b.innerHTML.includes("Control Panel"));
-            if (btn) {
-                btn.querySelector("img").src = "./res/icons/app/personalization.ico";
-            }
-        }
-    });
-};

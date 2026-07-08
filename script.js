@@ -11,7 +11,6 @@ updateClock();
 
 
 //------------------WINDOW LOGIC------------------
-// -----MULTI-WINDOW DRAGGING ENGINE-----
 function initializeWindowDragging(windowElement) {
     let initialX = 0, initialY = 0;
     let currentX = 0, currentY = 0;
@@ -55,7 +54,6 @@ function initializeWindowDragging(windowElement) {
 }
 document.querySelectorAll(".window").forEach(initializeWindowDragging);
 
-//-----WINDOW Z INDEX-----
 var biggestIndex = 1;
 
 function addWindowTapHandling(element) {
@@ -63,15 +61,8 @@ function addWindowTapHandling(element) {
     handleWindowTap(element)
   )
 }
-
-function handleWindowTap(element) {
-  biggestIndex++;  // Increment biggestIndex by 1
-  element.style.zIndex = biggestIndex;
-}
-
 document.querySelectorAll(".window").forEach(addWindowTapHandling);
 
-//-----CLOSING, MINIMZING, OPENING WINDOWS-----
 function initializeWindowButtons(windowElement){
     const btnMin = windowElement.querySelector(".min");
     const btnMax = windowElement.querySelector(".max");
@@ -110,41 +101,11 @@ function handleWindow(queryClass, action) {
     }
 }
 
-function closeWindow(element) {
-    element.style.display = "none";
-    element.style.top = "50%";
-    element.style.left = "50%";
-    element.style.transform = "translate(-50%, -50%)";
-    element.style.width = "";
-    element.style.height = "";
-}
-
-function minWindow(element) {
-    element.style.display = "none"
-}
-
-function maxWindow(element) {
-    element.style.top = "50%";
-    element.style.left = "50%";
-    element.style.transform = "translate(-50%, -50%)";
-    if (element.style.width === "100%") {
-        element.style.width = "";
-        element.style.height = "";
-    } else {
-        element.style.width = "100%";
-        element.style.height = "100%";
-    }
-}
-
-function openWindow(element) {
-    element.style.display = "flex";
-    biggestIndex++; 
-    element.style.zIndex = biggestIndex;
-}
 
 //------------------TASKBAR ENGINE------------------
 function updateTaskbar() {
     const container = document.querySelector("#taskbar-items-container");
+    if (!container) return;
     container.innerHTML = "";
 
     document.querySelectorAll(".window").forEach(win => {
@@ -162,6 +123,7 @@ function updateTaskbar() {
         
         let iconSrc = "./res/icons/app/welcome.ico";
         if (win.classList.contains("notepad")) iconSrc = "./res/icons/app/notepad.webp";
+        if (win.classList.contains("settings")) iconSrc = "./res/icons/app/computer.ico";
 
         const btn = document.createElement("button");
         btn.className = "taskbar-item";

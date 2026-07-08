@@ -20,8 +20,8 @@
         </button>
 
         <button class="desktopApp" onClick="handleWindow('.settings', 'open')">
-            <img src="./res/icons/app/personalization.ico">
-            <p >Settings</p>
+            <img src="./res/icons/app/computer.ico">
+            <p >Control Panel</p>
         </button>
 
         <button class="desktopApp" onClick="handleWindow('.notepad', 'open')">
@@ -33,7 +33,7 @@
 
     <!------------WINDOWS------------>
     <!--WINDOW WELCOME-->
-    <div class="window welcome" style="display:none;">
+    <div class="window welcome" style="display:flex;">
         <div class="dragable-holder">
             <div class="aero-title">Welcome</div>
             <div class="aero-controls">
@@ -57,7 +57,7 @@
     </div>
 
     <!-- SETTINGS WINDOW -->
-    <div class="window settings" style="display:flex;">
+    <div class="window settings" style="display:none;">
         <div class="dragable-holder">
             <div class="aero-title">Control Panel</div>
             <div class="aero-controls">
@@ -71,7 +71,7 @@
             <div class="window-main">
                 <div class="window-bar-left" style="width: 180px; background: rgba(242, 247, 252, 0.85); padding: 0;">
                     <div class="settings-nav-item active" onclick="switchSettingsSection('general')">
-                        <img src="./res/icons/app/welcome.ico" style="width: 18px; height: 18px;">
+                        <img src="./res/icons/app/computer.ico" style="width: 18px; height: 18px;">
                         <span>General</span>
                     </div>
                     <div class="settings-nav-item" onclick="switchSettingsSection('personalization')">
