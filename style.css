@@ -495,3 +495,33 @@ body {
     width: 670px;
     height: 440px;
 }
+
+.settings {
+    width: 620px;
+    height: 400px;
+}
+
+.settings-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    margin: 2px 4px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    color: #1e293b;
+    border: 1px solid transparent;
+    transition: all 0.08s ease;
+}
+
+.settings-nav-item:hover {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.settings-nav-item.active {
+    background: linear-gradient(to right, rgba(200, 225, 250, 0.7) 0%, rgba(225, 240, 255, 0.4) 100%);
+    border: 1px solid rgba(150, 190, 230, 0.6);
+    font-weight: 500;
+}

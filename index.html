@@ -19,6 +19,11 @@
             <p style="margin: 0px; color: #fff; text-shadow: 1px 0px 2px black;">Welcome</p>
         </button>
 
+        <button class="desktopApp" onClick="handleWindow('.settings', 'open')">
+            <img src="./res/icons/app/personalization.ico" style="width: 64px; height: 64px; border-radius: 16px;">
+            <p style="margin: 0px; color: #fff; text-shadow: 1px 0px 2px black;">Settings</p>
+        </button>
+
         <button class="desktopApp" onClick="handleWindow('.notepad', 'open')">
             <img src="./res/icons/app/notepad.webp" style="width: 64px; height: 64px; border-radius: 16px;">
             <p style="margin: 0px; color: #fff; text-shadow: 1px 0px 2px black;">Notepad</p>
@@ -50,9 +55,62 @@
             </div>
         </div>
     </div>
+
+    <!-- SETTINGS WINDOW -->
+    <div class="window settings" style="display:flex;">
+        <div class="dragable-holder">
+            <div class="aero-title">Control Panel</div>
+            <div class="aero-controls">
+                <button class="control-btn min" aria-label="Minimize"></button>
+                <button class="control-btn max" aria-label="Maximize"></button>
+                <button class="control-btn close" aria-label="Close"></button>
+            </div>
+        </div>
+
+        <div class="window-body" style="border-radius:0px 0px 5px 5px; padding: 0;">
+            <div class="window-main">
+                <div class="window-bar-left" style="width: 180px; background: rgba(242, 247, 252, 0.85); padding: 0;">
+                    <div class="settings-nav-item active" onclick="switchSettingsSection('general')">
+                        <img src="./res/icons/app/welcome.ico" style="width: 18px; height: 18px;">
+                        <span>General</span>
+                    </div>
+                    <div class="settings-nav-item" onclick="switchSettingsSection('personalization')">
+                        <img src="./res/icons/app/personalization.ico" style="width: 18px; height: 18px;">
+                        <span>Personalization</span>
+                    </div>
+                </div>
+
+                <div class="window-content" style="background: #ffffff; padding: 20px;">
+                    <div id="settings-general" class="settings-section">
+                        <h2 style="margin: 0 0 15px 0; font-size: 18px; font-weight: 400; color: #004687;">General Settings</h2>
+                        <p style="margin-bottom: 15px;">Configure the core behaviors of your web environment.</p>
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <label style="font-size: 12px; display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" checked> Enable Aero Glass reflections
+                            </label>
+                            <label style="font-size: 12px; display: flex; align-items: center; gap: 8px;">
+                                <input type="checkbox" checked> Sync system time automatically
+                            </label>
+                        </div>
+                    </div>
+
+                    <div id="settings-personalization" class="settings-section" style="display: none;">
+                        <h2 style="margin: 0 0 15px 0; font-size: 18px; font-weight: 400; color: #004687;">Personalization</h2>
+                        <p style="margin-bottom: 15px;">Change the appearance of your desktop background and windows.</p>
+                        <div style="display: flex; gap: 15px;">
+                            <button class="aero-btn btn-blue" style="font-size: 12px; padding: 4px 12px;">Change Wallpaper</button>
+                            <button class="aero-btn btn-green" style="font-size: 12px; padding: 4px 12px;">Color Scheme</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     
     <!--NOTEPAD WINDOW-->
-    <div class="window notepad" style="display:flex">
+    <div class="window notepad" style="display:none">
         <div class="dragable-holder">
             <div class="aero-title">Notepad</div>
             <div class="aero-controls">
@@ -85,11 +143,13 @@
     </div>
 
     <div class="taskbar">
+
         <div id="taskbar-blur-overlay"></div>
         <div id="taskbar-items-container"></div>
     </div>
 
     <script src="script.js"></script>
+    <script src="js/settings-app.js"></script>
     <script src="js/note-app.js"></script>
 </body>
 
