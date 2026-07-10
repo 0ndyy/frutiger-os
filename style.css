@@ -173,7 +173,9 @@ body {
     text-align: center;
     padding: 2px 15px 0px 15px;
     margin: 7px 1px 15px 1px;
-    width: fit-content;
+    width: 84px;
+    
+    box-sizing: border-box;
 }
 
 .desktopApp:hover {
@@ -194,6 +196,12 @@ body {
     text-shadow: 1px 0px 2px rgba(0, 0, 0, 0.7);
     font-weight: 350;
     font-size: 12px;
+    line-height: 1.3;
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Truncate with dots if it goes past line 2 */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 
