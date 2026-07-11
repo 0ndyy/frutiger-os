@@ -5,6 +5,19 @@ A web-based operating system crafted to revive the vibrant, glossy, and optimist
 
 ---
 
+## ⚠️⚠️⚠️⚠️ IMPORTANT: NOTE FOR SHIPPING REVIEWERS, PLEASE READ ⚠️⚠️⚠️⚠️
+This is my third time shipping this project and this time im quite furious as for the reasaons. Please note that this project is just sumbission for WebOS 1(which doesnt go into rating btw) and is WIP i will add more features in WebOS 2 mission.
+
+### Reviewer feedback:
+- *Rework the CSS, right now it looks like every other AI-made site. Give it your own style.* → This site is based of the frutiger aero era, especially windows 7, i really dont see how it resembles every other AI-made site, i find it really unique and i really feel insulted because i put a lot of time into fine tuning the details to look just right, i even made my own modular CSS system for easy new app implementation which i stated in my devlogs.
+- *Add a couple of features you came up with yourself to make it more fun to use.* → Like i said this is for WebOS 1 where the requirements are to have at least 1 new feature, and i have multiple = working notepad app(which the reviewer didnt even care to open), working taskbar, window buttons(max/min/close), setting app design(he tried using the buttons, which dont work, but i clearly staded in my readme that its just design and still WIP, which he didnt care to read either)
+- *Try to rewrite the code from scratch , it seem like you have used extensive amount of AI , please not that only 30% max usage of AI is allowed !* → This has to be satire, most of the code is taken from the WebOS 1 mission, the rest isnt that complicated to code, only thing i used ai heavily was help with the css elements, which i state in my AI usage declaration on HackClub.
+- *Rewrite the readme it seems like you have used AI to write readme* → You are correct on this one, i wrote the readme my self and then gave it to ai to "make it look pretty" so that one is on me.
+
+I apologize to all the reviewers that i poured my heart out here like this, but this really made me mad, please dont take this personally, i know you have a lot to review and cant go through it all in detail.
+
+---
+
 ## 🖼️ Screenshots & Interface
 
 ### Desktop Workspace
