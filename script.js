@@ -85,19 +85,17 @@ function handleWindow(queryClass, action) {
     
     if (!queriedElement) return; 
 
-    switch (action) {
-        case 'open':
-            openWindow(queriedElement);
-            break;
-        case 'close':
-            closeWindow(queriedElement);
-            break;
-        case 'min':
-            minWindow(queriedElement);
-            break;
-        case 'max':
-            maxWindow(queriedElement)
-            break;
+    if(action == "open"){
+        openWindow(queriedElement);
+    }
+    else if(action == "close"){
+        closeWindow(queriedElement);
+    }
+    else if(action == "min"){
+        minWindow(queriedElement);
+    }
+    else if(action == "max"){
+        maxWindow(queriedElement);
     }
 }
 
