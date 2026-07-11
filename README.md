@@ -46,7 +46,7 @@ Characterized by complex skeuomorphism, vivid color palettes (primarily aquatic 
 - [x] **Notepad App** – Simple, working notepad application
 - [x] **Control Panel Design** – Basic design that doesnt work yet
 - [ ] **Notepad .md preview** – Implement working format button
-- [ ] **Control Panel Functuonality** – Basic settings such as wallpaper, transparency...
+- [ ] **Control Panel Functuonality** – Basic settings such as ~~wallpaper~~, transparency...
 - [ ] **Music App**
 - [ ] **Paint App**
 - [ ] **Authentic Playable Games**

@@ -3,10 +3,10 @@
 <head>
   <link rel="stylesheet" href="style.css">
 </head>
-<body style="background-image: url(./res/wp/wp3.jpg);">
+<body style="background-image: url(./res/wp/wp1.jpg);">
     <!--MENUBAR-->
-    <div class="menu-bar">
-        <div id="blur-overlay"></div>
+    <div class="menu-bar" id="menu-bar">
+        <div class="blur-overlay menu-bar-bo"></div>
         <p style="margin-left: 16px;"> Frutiger OS </p> 
         <p id="timeElement" style="margin-right: 16px;"> TIME </p>
     </div>
@@ -57,7 +57,7 @@
     </div>
 
     <!-- SETTINGS WINDOW -->
-    <div class="window settings" style="display:none;">
+    <div class="window settings">
         <div class="dragable-holder">
             <div class="aero-title">Control Panel</div>
             <div class="aero-controls">
@@ -67,42 +67,99 @@
             </div>
         </div>
 
-        <div class="window-body" style="border-radius:0px 0px 5px 5px; padding: 0;">
-            <div class="window-main">
-                <div class="window-bar-left" style="width: 180px; background: rgba(242, 247, 252, 0.85); padding: 0;">
-                    <div class="settings-nav-item active" onclick="switchSettingsSection('general')">
-                        <img src="./res/icons/app/computer.ico" style="width: 18px; height: 18px;">
-                        <span>General</span>
-                    </div>
-                    <div class="settings-nav-item" onclick="switchSettingsSection('personalization')">
-                        <img src="./res/icons/app/personalization.ico" style="width: 18px; height: 18px;">
-                        <span>Personalization</span>
+        <div class="window-topbar" style="background:none; padding: 2px 0px 2px 0px">
+            <button onclick="switchSettingsView('settings-home')" class="aero-btn btn-light-blue" style="margin-left:5px; width: 28px; height: 28px; border-radius: 50%; padding: 0; display: inline-flex; align-items: center; justify-content: center; font-size: 16px; line-height: 1;">←</button>
+        
+            <div class="window-body" style="border-radius: 0px; padding: 0; background: white; margin: 0px 0px 0px 5px"><p style="font-size: 12px; margin: 5px; color: #555;" id="settingsNavigation">Home</p></div>
+        </div>
+
+        <div class="window-body" style="border-radius: 0px 0px 5px 5px; padding: 0; background: white;">
+            <div class="window-main" style="height: 100%;">
+                
+                <!-- home section  -->
+                <div id="settings-home" class="window-content settingsView" style="display: block; padding: 25px;">
+                    <h2 style="margin: 0 0 20px 0; font-size: 20px; font-weight: 400; color: #004687;">Adjust your computer's settings</h2>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                        <!-- Go to section btns on homepage -->
+
+                        <button type="button" onclick="switchSettingsView('settings-general')" style="display: flex; gap: 15px; align-items: flex-start; background: none; border: none; padding: 0; margin: 0; font: inherit; text-align: left; cursor: pointer; width: 100%;">
+                            <img src="./res/icons/app/computer.ico" style="width: 36px; height: 36px; flex-shrink: 0;">
+                            <div>
+                                <span style="display: block; font-size: 14px; font-weight: 600; color: #004687; text-decoration: none;">General</span>
+                                <p style="margin: 4px 0 0 0; font-size: 11px; color: #555;">Change Desktop Behaviour</p>
+                                <p style="margin: 4px 0 0 0; font-size: 11px; color: #555;">Hide Elements</p>
+                            </div>
+                        </button>
+
+                        <button type="button" onclick="switchSettingsView('settings-personalization')" style="display: flex; gap: 15px; align-items: flex-start; background: none; border: none; padding: 0; margin: 0; font: inherit; text-align: left; cursor: pointer; width: 100%;">
+                            <img src="./res/icons/app/personalization.ico" style="width: 36px; height: 36px; flex-shrink: 0;">
+                            <div>
+                                <span style="display: block; font-size: 14px; font-weight: 600; color: #004687; text-decoration: none;">Appearance and Personalization</span>
+                                <p style="margin: 4px 0 0 0; font-size: 11px; color: #555;">Change Wallpaper</p>
+                            </div>
+                        </button>
+
                     </div>
                 </div>
 
-                <div class="window-content" style="background: #ffffff; padding: 20px;">
-                    <div id="settings-general" class="settings-section">
-                        <h2 style="margin: 0 0 15px 0; font-size: 18px; font-weight: 400; color: #004687;">General Settings</h2>
-                        <p style="margin-bottom: 15px;">Configure the core behaviors of your web environment.</p>
-                        <div style="display: flex; flex-direction: column; gap: 10px;">
-                            <label style="font-size: 12px; display: flex; align-items: center; gap: 8px;">
-                                <input type="checkbox" checked> Enable Aero Glass reflections
-                            </label>
-                            <label style="font-size: 12px; display: flex; align-items: center; gap: 8px;">
-                                <input type="checkbox" checked> Sync system time automatically
-                            </label>
-                        </div>
+                <!-- general section  -->
+                <div id="settings-general" class="window-content settingsView" style="display: none; padding: 20px;">
+                    <h2 style="margin: 0 0 10px 0; font-size: 18px; font-weight: 400; color: #004687;">General</h2>
+                    <p style="margin-bottom: 15px; font-size: 12px; color: #555;">Switch toggles to change settings</p>
+                    <hr style="border: 0; border-top: 1px solid #ddd; margin-bottom: 15px;">
+                    
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <label class="toggleSwitch-row">
+                            <span class="toggleSwitch" style="--scale: 0.7;">
+                                <input type="checkbox" onchange="HideElementsToggle(this, '#menu-bar')">
+                                <span class="toggleSwitch-slider"></span>
+                            </span>
+                            <span class="toggleSwitch-label">Hide Mainbar</span>
+                        </label>
                     </div>
 
-                    <div id="settings-personalization" class="settings-section" style="display: none;">
-                        <h2 style="margin: 0 0 15px 0; font-size: 18px; font-weight: 400; color: #004687;">Personalization</h2>
-                        <p style="margin-bottom: 15px;">Change the appearance of your desktop background and windows.</p>
-                        <div style="display: flex; gap: 15px;">
-                            <button class="aero-btn btn-blue" style="font-size: 12px; padding: 4px 12px;">Change Wallpaper</button>
-                            <button class="aero-btn btn-green" style="font-size: 12px; padding: 4px 12px;">Color Scheme</button>
-                        </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <label class="toggleSwitch-row">
+                            <span class="toggleSwitch" style="--scale: 0.7;">
+                                <input type="checkbox" onchange="HideElementsToggle(this, '#taskbar')">
+                                <span class="toggleSwitch-slider"></span>
+                            </span>
+                            <span class="toggleSwitch-label">Hide Taskbar</span>
+                        </label>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <label class="toggleSwitch-row">
+                            <span class="toggleSwitch" style="--scale: 0.7;">
+                                <input type="checkbox" onchange="HideElementsToggle(this, '#desktopApps')">
+                                <span class="toggleSwitch-slider"></span>
+                            </span>
+                            <span class="toggleSwitch-label">Hide Desktop Icons</span>
+                        </label>
                     </div>
                 </div>
+
+                <!-- personalizayion section  -->
+                <div id="settings-personalization" class="window-content settingsView" style="display: none; padding: 20px;">
+                    <h2 style="margin: 0 0 10px 0; font-size: 18px; font-weight: 400; color: #004687;">Appearance and Personalization</h2>
+                    <p style="margin-bottom: 15px; font-size: 12px; color: #555;">Click an image below to change your desktop background.</p>
+                    <hr style="border: 0; border-top: 1px solid #ddd; margin-bottom: 15px;">
+                    
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                        <button class="aero-btn" style="background-image: url('./res/wp/wp1.jpg'); background-size: cover; background-position: center; width: 120px; height: 75px;" onclick="changeWallpaper('./res/wp/wp1.jpg')"></button>
+                        <button class="aero-btn" style="background-image: url('./res/wp/wp2.jpg'); background-size: cover; background-position: center; width: 120px; height: 75px;" onclick="changeWallpaper('./res/wp/wp2.jpg')"></button>
+                        <button class="aero-btn" style="background-image: url('./res/wp/wp3.jpg'); background-size: cover; background-position: center; width: 120px; height: 75px;" onclick="changeWallpaper('./res/wp/wp3.jpg')"></button>
+                        <button class="aero-btn" style="background-image: url('./res/wp/wp4.jpg'); background-size: cover; background-position: center; width: 120px; height: 75px;" onclick="changeWallpaper('./res/wp/wp4.jpg')"></button>
+                        <button class="aero-btn" style="background-image: url('./res/wp/wp5.jpg'); background-size: cover; background-position: center; width: 120px; height: 75px;" onclick="changeWallpaper('./res/wp/wp5.jpg')"></button>
+                        <button class="aero-btn" style="background-image: url('./res/wp/wp6.jpg'); background-size: cover; background-position: center; width: 120px; height: 75px;" onclick="changeWallpaper('./res/wp/wp6.jpg')"></button>
+                        <button class="aero-btn" style="background-image: url('./res/wp/wp7.jpg'); background-size: cover; background-position: center; width: 120px; height: 75px;" onclick="changeWallpaper('./res/wp/wp7.jpg')"></button>
+                        <button class="aero-btn" style="background-image: url('./res/wp/wp8.jpg'); background-size: cover; background-position: center; width: 120px; height: 75px;" onclick="changeWallpaper('./res/wp/wp8.jpg')"></button>
+                        <button class="aero-btn" style="background-image: url('./res/wp/wp9.jpg'); background-size: cover; background-position: center; width: 120px; height: 75px;" onclick="changeWallpaper('./res/wp/wp9.jpg')"></button>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -142,9 +199,9 @@
             </div>
     </div>
 
-    <div class="taskbar">
+    <div class="taskbar" id="taskbar">
 
-        <div id="taskbar-blur-overlay"></div>
+        <div class="taskbar-bo blur-overlay"></div>
         <div id="taskbar-items-container"></div>
     </div>
 
