@@ -5,7 +5,7 @@ A web-based operating system crafted to revive the vibrant, glossy, and optimist
 
 ---
 
-## ⚠️⚠️⚠️⚠️ IMPORTANT: NOTE FOR SHIPPING REVIEWERS, PLEASE READ ⚠️⚠️⚠️⚠️
+## ⚠️⚠️ IMPORTANT: FOR SHIPPING REVIEWERS, PLEASE READ ⚠️⚠️
 This is my third time shipping this project and this time im quite furious as for the reasaons. Please note that this project is just sumbission for WebOS 1(which doesnt go into rating btw) and is WIP i will add more features in WebOS 2 mission.
 
 ### Reviewer feedback:
