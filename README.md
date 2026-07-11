@@ -10,9 +10,9 @@ This is my third time shipping this project and this time im quite furious as fo
 
 ### Reviewer feedback:
 - *Rework the CSS, right now it looks like every other AI-made site. Give it your own style.* → This site is based of the frutiger aero era, especially windows 7, i really dont see how it resembles every other AI-made site, i find it really unique and i really feel insulted because i put a lot of time into fine tuning the details to look just right, i even made my own modular CSS system for easy new app implementation which i stated in my devlogs.
-- *Add a couple of features you came up with yourself to make it more fun to use.* → Like i said this is for WebOS 1 where the requirements are to have at least 1 new feature, and i have multiple = working notepad app(which the reviewer didnt even care to open), working taskbar, window buttons(max/min/close), setting app design(he tried using the buttons, which dont work, but i clearly staded in my readme that its just design and still WIP, which he didnt care to read either)
+- *Add a couple of features you came up with yourself to make it more fun to use.* → Like i said this is for WebOS 1 where the requirements are to have at least 1 new feature(its WIP so will add more for WebOS 2, i just wanted to have this flagged so the new work is under WebOS 2), and i have multiple = working notepad app(which the reviewer didnt even care to open), working taskbar, window buttons(max/min/close), setting app design(he tried using the buttons, which dont work, but i clearly staded in my readme that its just design and still WIP, which he didnt care to read either)
 - *Try to rewrite the code from scratch , it seem like you have used extensive amount of AI , please not that only 30% max usage of AI is allowed !* → This has to be satire, most of the code is taken from the WebOS 1 mission, the rest isnt that complicated to code, only thing i used ai heavily was help with the css elements, which i state in my AI usage declaration on HackClub.
-- *Rewrite the readme it seems like you have used AI to write readme* → You are correct on this one, i wrote the readme my self and then gave it to ai to "make it look pretty" so that one is on me.
+- *Rewrite the readme it seems like you have used AI to write readme* → You are correct on this one, i wrote the readme my self and then gave it to ai to "make it look pretty" so that one is on me. I didnt know such things are also considered. Maybe he also meant the frutiger aero history section whcich was takend from the archive website.
 
 I apologize to all the reviewers that i poured my heart out here like this, but this really made me mad, please dont take this personally, i know you have a lot to review and cant go through it all in detail.
 
@@ -33,7 +33,7 @@ I apologize to all the reviewers that i poured my heart out here like this, but 
 Characterized by complex skeuomorphism, vivid color palettes (primarily aquatic blues, vibrant greens, and orange accents), high-gloss textures, glass textures (`Aero Glass`), lens flares, and natural motifs (water droplets, green grass, bubbles), it represented an era of extreme technological optimism.
 
 ### 📚 Fascinating Reads & Resources
-* [The Frutiger Aero Archive & Aesthetic Analysis](https://aesthetics.fandom.com/wiki/Frutiger_Aero) – A deep dive into the historical origins, core design philosophy, and visual components.
+* [The Frutiger Aero Archive](https://aesthetics.fandom.com/wiki/Frutiger_Aero) – A deep dive into the history, design philosophy, visual components and fanbase.
 
 ---
 
@@ -59,4 +59,4 @@ Characterized by complex skeuomorphism, vivid color palettes (primarily aquatic 
 
 ## 🌟 Acknowledgement
 
-Developed as part of **Hack Club Stardance 2026**. Inspired by the legacy OS engines of yesteryear and dedicated to keeping the spirit of early-digital web design alive.
+Developed as part of **Hack Club Stardance 2026**.
