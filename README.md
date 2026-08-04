@@ -22,11 +22,12 @@ You can check it out here - [CLICK TO OPEN DEMO](https://0ndyy.github.io/frutige
 - [x] **Skeuomorphic Responsive Grid** – Self-centering vertical flexbox shortcut configurations matching modern alignment behavior while maintaining line-clamping bounds for titles.
 - [x] **Notepad App** – Simple, working notepad application
 - [x] **Control Panel App** – Basically a settings app
+- [X] **Paint App**
 - [ ] **Music App**
-- [ ] **Paint App**
 - [ ] **Authentic Playable Games**
 - [ ] **About Window**
 - [ ] **About Frutiger Aero Era Window**
+- [ ] **Web Browser**
 
 ... and more
 
