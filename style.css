@@ -513,6 +513,13 @@ body {
     height: 400px;
 }
 
+.paint {
+    width: 700px;
+    height: 500px;
+}
+
+
+
 .settings-nav-item {
     display: flex;
     align-items: center;

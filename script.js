@@ -122,6 +122,7 @@ function updateTaskbar() {
         let iconSrc = "./res/icons/app/welcome.ico";
         if (win.classList.contains("notepad")) iconSrc = "./res/icons/app/notepad.webp";
         if (win.classList.contains("settings")) iconSrc = "./res/icons/app/computer.ico";
+        if (win.classList.contains("paint")) iconSrc = "./res/icons/app/paint.png";
 
         const btn = document.createElement("button");
         btn.className = "taskbar-item";
