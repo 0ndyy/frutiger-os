@@ -499,6 +499,19 @@ body {
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 0 8px rgba(230, 26, 26, 0.6);
 }
 
+.aero-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.window-title-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
 .welcome {
     width: 300px;
 }

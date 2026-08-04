@@ -28,6 +28,7 @@ You can check it out here - [CLICK TO OPEN DEMO](https://0ndyy.github.io/frutige
 - [ ] **About Window**
 - [ ] **About Frutiger Aero Era Window**
 - [ ] **Web Browser**
+- [ ] **Boot Animation**
 
 ... and more
 
