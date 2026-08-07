@@ -2,6 +2,7 @@
 <html>
 <head>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="js/css/music-app.css">
 </head>
 <body style="background-image: url(./res/wp/wp1.jpg);">
     <!--MENUBAR-->
@@ -15,7 +16,7 @@
     <!--DESKTOP APPS-->
     <div id="desktopApps" style="padding-top: 8px; padding-left: 8px;">
         <button class="desktopApp" onClick="handleWindow('.welcome', 'open')">
-            <img src="./res/icons/app/welcome.ico" >
+            <img src="./res/icons/app/welcome.png" >
             <p >Welcome</p>
         </button>
 
@@ -33,6 +34,11 @@
             <img src="./res/icons/app/paint.png">
             <p >Paint</p>
         </button>
+
+        <button class="desktopApp" onClick="handleWindow('.music', 'open')">
+            <img src="./res/icons/app/mediaplayer.webp" alt="Music Player">
+            <p>Music Player</p>
+        </button>
     </div>
 
 
@@ -41,7 +47,7 @@
     <div class="window welcome" style="display:flex;">
         <div class="dragable-holder">
             <div class="aero-title">
-                    <img src="./res/icons/app/welcome.ico" class="window-title-icon" alt="">
+                    <img src="./res/icons/app/welcome.png" class="window-title-icon" alt="">
                     <span>Welcome</span>
             </div>
             <div class="aero-controls">
@@ -235,6 +241,13 @@
         </div>
     </div>
 
+
+    <!-- MUSIC WINDOW -->
+    <div class="window music" style="display:none; padding: 0; background: transparent; border: none; box-shadow: none;">
+        <audio id="os-audio-player"></audio>
+        <div id="wmp-engine-container" style="position: relative;"></div>
+    </div>
+
     <div class="taskbar" id="taskbar">
 
         <div class="taskbar-bo blur-overlay"></div>
@@ -244,6 +257,7 @@
     <script src="script.js"></script>
     <script src="js/settings-app.js"></script>
     <script src="js/note-app.js"></script>
+    <script src="js/music-app.js"></script>
 </body>
 
 </html>

@@ -119,10 +119,11 @@ function updateTaskbar() {
         const isMinimized = win.style.display === "none";
         const isFocused = !isMinimized && parseInt(win.style.zIndex || 0) === biggestIndex;
         
-        let iconSrc = "./res/icons/app/welcome.ico";
+        let iconSrc = "./res/icons/app/welcome.png";
         if (win.classList.contains("notepad")) iconSrc = "./res/icons/app/notepad.webp";
         if (win.classList.contains("settings")) iconSrc = "./res/icons/app/computer.ico";
         if (win.classList.contains("paint")) iconSrc = "./res/icons/app/paint.png";
+        if (win.classList.contains("music")) iconSrc = "./res/icons/app/mediaplayer.webp";
 
         const btn = document.createElement("button");
         btn.className = "taskbar-item";
