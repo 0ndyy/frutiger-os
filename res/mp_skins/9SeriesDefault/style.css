@@ -5,11 +5,19 @@ body, #mp_9SeriesDefault_screen, #mp_9SeriesDefault_status-bar, .mp_9SeriesDefau
   font-family: 'VT323', 'Courier New', monospace;
   color: #00ff00;
   
-  /* Disable font anti-aliasing for sharp pixelated edges */
+
   -webkit-font-smoothing: none;
   -moz-osx-font-smoothing: unset;
   font-smooth: never;
   text-rendering: optimizeSpeed;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  width: max-content; 
+  height: max-content; 
 }
 
 /* --- MAIN PLAYER CONTAINER --- */
@@ -18,7 +26,6 @@ body, #mp_9SeriesDefault_screen, #mp_9SeriesDefault_status-bar, .mp_9SeriesDefau
   width: 346px;
   height: 349px;
   background: url('main_bg.png') no-repeat;
-  margin: 50px auto;
   font-family: Arial, sans-serif;
 }
 
@@ -43,7 +50,6 @@ body, #mp_9SeriesDefault_screen, #mp_9SeriesDefault_status-bar, .mp_9SeriesDefau
   padding: 4px;
 }
 
-/* Scrollbar styling for retro green aesthetic */
 #mp_9SeriesDefault_screen::-webkit-scrollbar {
   width: 6px;
 }
@@ -71,7 +77,6 @@ body, #mp_9SeriesDefault_screen, #mp_9SeriesDefault_status-bar, .mp_9SeriesDefau
   background-color: #003300;
 }
 
-/* Force crisp pixel rendering on all inner text spans */
 .mp_9SeriesDefault_track-item span {
   font-family: 'VT323', monospace;
   font-size: 15px;
@@ -134,7 +139,6 @@ body, #mp_9SeriesDefault_screen, #mp_9SeriesDefault_status-bar, .mp_9SeriesDefau
   letter-spacing: 1px;
 }
 
-/* Green glow effect for retro screen aesthetic */
 .mp_9SeriesDefault_status-text, .mp_9SeriesDefault_status-time, .mp_9SeriesDefault_track-item {
   text-shadow: 0 0 2px rgba(0, 255, 0, 0.5);
 }

@@ -2,7 +2,6 @@
 <html>
 <head>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="css/music-theme-default.css">
 </head>
 <body style="background-image: url(./res/wp/wp1.jpg);">
     <!--MENUBAR-->
@@ -242,7 +241,21 @@
     </div>
 
 
-    <!-- MUSIC WINDOW  -->
+    <!-- MUSIC WINDOW (!!!dragable holder size and iframe size needs to be updated with iframe src)-->
+    <div class="window music" style="display:none;">
+        <div class="dragable-holder" style="position: absolute; top: 0; left: 100px; width: 200px; height: 30px;">
+        <div class="aero-title" style="display:none;"><span>Music Player</span></div>
+        </div>
+
+        <div class="aero-controls" style="display: none;">
+            <button class="control-btn min"></button>
+            <button class="control-btn max"></button>
+            <button class="control-btn close"></button>
+        </div>
+
+        <iframe src="/res/mp_skins/9SeriesDefault/index.html" style="width:346px; height:349px;" scrolling="no"></iframe>
+        
+    </div>
     
 
     <div class="taskbar" id="taskbar">
@@ -254,7 +267,6 @@
     <script src="script.js"></script>
     <script src="js/settings-app.js"></script>
     <script src="js/note-app.js"></script>
-    <script src="js/music-theme-default.js"></script>
 </body>
 
 </html>
