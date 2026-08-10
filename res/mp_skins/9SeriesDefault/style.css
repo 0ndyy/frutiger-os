@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+/* --- PIXELATED TEXT --- */
+body, #mp_9SeriesDefault_screen, #mp_9SeriesDefault_status-bar, .mp_9SeriesDefault_track-item {
+  font-family: 'VT323', 'Courier New', monospace;
+  color: #00ff00;
+  
+  /* Disable font anti-aliasing for sharp pixelated edges */
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: unset;
+  font-smooth: never;
+  text-rendering: optimizeSpeed;
+}
+
+/* --- MAIN PLAYER CONTAINER --- */
+#mp_9SeriesDefault_player {
+  position: relative;
+  width: 346px;
+  height: 349px;
+  background: url('main_bg.png') no-repeat;
+  margin: 50px auto;
+  font-family: Arial, sans-serif;
+}
+
+#mp_9SeriesDefault_player button {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* --- INNER SCREEN / PLAYLIST AREA --- */
+#mp_9SeriesDefault_screen {
+  position: absolute;
+  left: 19px;
+  top: 26px;
+  width: 320px;
+  height: 240px;
+  background-color: #000;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  padding: 4px;
+}
+
+/* Scrollbar styling for retro green aesthetic */
+#mp_9SeriesDefault_screen::-webkit-scrollbar {
+  width: 6px;
+}
+#mp_9SeriesDefault_screen::-webkit-scrollbar-track {
+  background: #111;
+}
+#mp_9SeriesDefault_screen::-webkit-scrollbar-thumb {
+  background: #00ff00;
+  border-radius: 2px;
+}
+
+/* Track List Items */
+.mp_9SeriesDefault_track-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 6px;
+  margin-bottom: 2px;
+  background-color: #0a0a0a;
+  border-bottom: 1px solid #1a1a1a;
+  cursor: pointer;
+}
+
+.mp_9SeriesDefault_track-item:hover {
+  background-color: #003300;
+}
+
+/* Force crisp pixel rendering on all inner text spans */
+.mp_9SeriesDefault_track-item span {
+  font-family: 'VT323', monospace;
+  font-size: 15px;
+  line-height: 1;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: unset;
+  font-smooth: never;
+  text-rendering: optimizeSpeed;
+  text-shadow: 0 0 2px rgba(0, 255, 0, 0.4);
+}
+
+.mp_9SeriesDefault_track-name {
+  flex-grow: 1;
+  color: #00ff00;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 8px;
+}
+
+.mp_9SeriesDefault_track-artist {
+  width: 90px;
+  color: #00aa00;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 8px;
+}
+
+.mp_9SeriesDefault_track-length {
+  width: 40px;
+  text-align: right;
+  color: #00ff00;
+}
+
+#mp_9SeriesDefault_status-bar {
+  position: absolute;
+  left: 19px;
+  top: 259px;
+  width: 320px;
+  height: 20px;
+  background-color: #000000;
+  border-top: 1px solid #111111;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8px;
+  box-sizing: border-box;
+  z-index: 5;
+}
+
+.mp_9SeriesDefault_status-text {
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.mp_9SeriesDefault_status-time {
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+/* Green glow effect for retro screen aesthetic */
+.mp_9SeriesDefault_status-text, .mp_9SeriesDefault_status-time, .mp_9SeriesDefault_track-item {
+  text-shadow: 0 0 2px rgba(0, 255, 0, 0.5);
+}
+
+/* --- WINDOW CONTROLS (Top Right) --- */
+.mp_9SeriesDefault_btn-win {
+  position: absolute;
+  top: 3px;
+  height: 19px;
+  background-image: url('player_top_controls_right.bmp');
+}
+#mp_9SeriesDefault_btn-min {
+  right: 24px;
+  width: 18px;
+  background-position: -5px -1px;
+}
+#mp_9SeriesDefault_btn-close {
+  right: 5px;
+  width: 18px;
+  background-position: -22px 0;
+}
+
+.mp_9SeriesDefault_btn-win:hover { background-image: url('player_top_controls_right_hover.bmp'); }
+.mp_9SeriesDefault_btn-win:active { background-image: url('player_top_controls_right_down.bmp'); }
+
+/* --- TRANSPORT BUTTON SPRITE SLICING --- */
+.mp_9SeriesDefault_transports-group {
+  position: absolute;
+  left: 20px; 
+  top: 305px;  
+  display: flex;
+  height: 30px;
+}
+
+.mp_9SeriesDefault_btn-t {
+  height: 30px;
+  background-image: url('transports.bmp');
+}
+
+#mp_9SeriesDefault_btn-play { width: 30px; background-position: 0 0; }
+#mp_9SeriesDefault_btn-stop { width: 26px; background-position: -30px 0; } 
+#mp_9SeriesDefault_btn-prev { width: 26px; background-position: -56px 0; } 
+#mp_9SeriesDefault_btn-next { width: 26px; background-position: -82px 0; }
+#mp_9SeriesDefault_btn-mute { width: 28px; background-position: -108px 0; }
+
+.mp_9SeriesDefault_btn-t:hover { background-image: url('transports_hover.bmp'); }
+.mp_9SeriesDefault_btn-t:active { background-image: url('transports_down.bmp'); }
+
+/* --- INDIVIDUAL BUTTONS --- */
+#mp_9SeriesDefault_btn-rew {
+  position: absolute;
+  left: 18px;
+  top: 286px; 
+  width: 35px;
+  height: 13px;
+  background-image: url('seekbutton_left.bmp');
+}
+#mp_9SeriesDefault_btn-rew:hover { background-image: url('seekbutton_left_hover.bmp'); }
+
+#mp_9SeriesDefault_btn-ffwd {
+  position: absolute;
+  left: 303px; 
+  top: 286px;
+  width: 35px;
+  height: 13px;
+  background-image: url('seekbutton_right.bmp');
+}
+#mp_9SeriesDefault_btn-ffwd:hover { background-image: url('seekbutton_right_hover.bmp'); }
+
+/* --- SLIDERS --- */
+.mp_9SeriesDefault_slider-container {
+  position: absolute;
+  overflow: hidden;
+}
+
+.mp_9SeriesDefault_slider-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+#mp_9SeriesDefault_player input[type="range"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  z-index: 2;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+#mp_9SeriesDefault_player input[type="range"]:focus { outline: none; }
+
+/* Seek Slider */
+#mp_9SeriesDefault_seek-wrapper {
+  left: 54px;
+  top: 286px;
+  width: 249px;
+  height: 13px;
+}
+#mp_9SeriesDefault_seek-fill {
+  background: url('track_bar_filled.bmp') no-repeat left center;
+  background-size: 249px 13px;
+}
+#mp_9SeriesDefault_seek-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 13px;
+  background: url('track_bar_slider.bmp') no-repeat center / contain;
+}
+#mp_9SeriesDefault_seek-bar:hover::-webkit-slider-thumb {
+  background: url('track_bar_slider_hover.bmp') no-repeat center / contain;
+}
+
+/* Volume Slider */
+#mp_9SeriesDefault_volume-wrapper {
+  left: 162px;
+  top: 310px;
+  width: 68px;
+  height: 18px;
+}
+#mp_9SeriesDefault_volume-fill {
+  background: url('volume_bar_filled.bmp') no-repeat left center;
+  background-size: 68px 18px;
+}
+#mp_9SeriesDefault_volume-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 18px;
+  background: url('volume_slider.bmp') no-repeat center / contain;
+}
+#mp_9SeriesDefault_volume-bar:hover::-webkit-slider-thumb {
+  background: url('volume_slider_hover.bmp') no-repeat center / contain;
+}

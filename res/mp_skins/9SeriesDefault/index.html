@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WMP Skin - Unified Background</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="mp_9SeriesDefault_player">
+  
+  <!-- Window Controls -->
+  <button id="mp_9SeriesDefault_btn-min" class="mp_9SeriesDefault_btn-win" title="Minimize" onclick="mp_9SeriesDefault_onMinimize()"></button>
+  <button id="mp_9SeriesDefault_btn-close" class="mp_9SeriesDefault_btn-win" title="Close" onclick="mp_9SeriesDefault_onClose()"></button>
+
+  <!-- Player Screen / Playlist Container -->
+  <div id="mp_9SeriesDefault_screen">
+    <div class="mp_9SeriesDefault_track-item">
+      <span class="mp_9SeriesDefault_track-name">01. Midnight City</span>
+      <span class="mp_9SeriesDefault_track-artist">M83</span>
+      <span class="mp_9SeriesDefault_track-length">04:03</span>
+    </div>
+  </div>
+
+  <div id="mp_9SeriesDefault_status-bar">
+    <span class="mp_9SeriesDefault_status-text">Ready</span>
+    <span class="mp_9SeriesDefault_status-time">00:00</span>
+  </div>
+
+  <!-- Track Seek Slider (Cropped Fill Wrapper) -->
+  <div id="mp_9SeriesDefault_seek-wrapper" class="mp_9SeriesDefault_slider-container">
+    <div id="mp_9SeriesDefault_seek-fill" class="mp_9SeriesDefault_slider-fill"></div>
+    <input type="range" id="mp_9SeriesDefault_seek-bar" min="0" max="100" value="0">
+  </div>
+
+  <!-- Rewind & Fast-Forward -->
+  <button id="mp_9SeriesDefault_btn-rew" class="mp_9SeriesDefault_btn-single" title="Rewind" onclick="mp_9SeriesDefault_onRewind()"></button>
+  <button id="mp_9SeriesDefault_btn-ffwd" class="mp_9SeriesDefault_btn-single" title="Fast Forward" onclick="mp_9SeriesDefault_onFastForward()"></button>
+
+  <!-- Transport Controls -->
+  <div class="mp_9SeriesDefault_transports-group">
+    <button id="mp_9SeriesDefault_btn-play" class="mp_9SeriesDefault_btn-t" title="Play" onclick="mp_9SeriesDefault_onPlay()"></button>
+    <button id="mp_9SeriesDefault_btn-stop" class="mp_9SeriesDefault_btn-t" title="Stop" onclick="mp_9SeriesDefault_onStop()"></button>
+    <button id="mp_9SeriesDefault_btn-prev" class="mp_9SeriesDefault_btn-t" title="Previous" onclick="mp_9SeriesDefault_onPrev()"></button>
+    <button id="mp_9SeriesDefault_btn-next" class="mp_9SeriesDefault_btn-t" title="Next" onclick="mp_9SeriesDefault_onNext()"></button>
+    <button id="mp_9SeriesDefault_btn-mute" class="mp_9SeriesDefault_btn-t" title="Mute" onclick="mp_9SeriesDefault_onMute()"></button>
+  </div>
+
+  <!-- Volume Slider (Cropped Fill Wrapper) -->
+  <div id="mp_9SeriesDefault_volume-wrapper" class="mp_9SeriesDefault_slider-container">
+    <div id="mp_9SeriesDefault_volume-fill" class="mp_9SeriesDefault_slider-fill"></div>
+    <input type="range" id="mp_9SeriesDefault_volume-bar" min="0" max="100" value="50">
+  </div>
+
+  <!-- Compact Mode Button -->
+  <button id="mp_9SeriesDefault_btn-compact" class="mp_9SeriesDefault_btn-single" title="Compact Mode" onclick="mp_9SeriesDefault_onCompact()"></button>
+
+</div>
+
+<script>
+  // Dynamic Slider Fill (Cropping technique)
+  function mp_9SeriesDefault_updateSliderFill(slider, fillElem) {
+    const min = slider.min || 0;
+    const max = slider.max || 100;
+    const percent = ((slider.value - min) / (max - min)) * 100;
+    fillElem.style.width = `${percent}%`;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const seek = document.getElementById('mp_9SeriesDefault_seek-bar');
+    const seekFill = document.getElementById('mp_9SeriesDefault_seek-fill');
+    const volume = document.getElementById('mp_9SeriesDefault_volume-bar');
+    const volumeFill = document.getElementById('mp_9SeriesDefault_volume-fill');
+
+    // Initial positioning
+    mp_9SeriesDefault_updateSliderFill(seek, seekFill);
+    mp_9SeriesDefault_updateSliderFill(volume, volumeFill);
+
+    // Event listeners
+    seek.addEventListener('input', (e) => {
+      mp_9SeriesDefault_updateSliderFill(e.target, seekFill);
+      mp_9SeriesDefault_onSeekChange(e.target.value);
+    });
+
+    volume.addEventListener('input', (e) => {
+      mp_9SeriesDefault_updateSliderFill(e.target, volumeFill);
+      mp_9SeriesDefault_onVolumeChange(e.target.value);
+    });
+  });
+
+  // Action handlers
+  function mp_9SeriesDefault_onMinimize() { console.log("Minimize"); }
+  function mp_9SeriesDefault_onClose() { console.log("Close"); }
+  function mp_9SeriesDefault_onPlay() { console.log("Play"); }
+  function mp_9SeriesDefault_onNext() { console.log("Next"); }
+  function mp_9SeriesDefault_onStop() { console.log("Stop"); }
+  function mp_9SeriesDefault_onPrev() { console.log("Prev"); }
+  function mp_9SeriesDefault_onMute() { console.log("Mute"); }
+  function mp_9SeriesDefault_onRewind() { console.log("Rewind"); }
+  function mp_9SeriesDefault_onFastForward() { console.log("Fast Forward"); }
+  function mp_9SeriesDefault_onCompact() { console.log("Compact"); }
+  function mp_9SeriesDefault_onSeekChange(val) { console.log("Seek:", val); }
+  function mp_9SeriesDefault_onVolumeChange(val) { console.log("Volume:", val); }
+</script>
+
+</body>
+</html>
