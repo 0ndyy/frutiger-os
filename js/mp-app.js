@@ -1,8 +1,13 @@
 // --- PLAYLIST DATA ---
 const playlist = [
-  { title: "Midnight City", artist: "M83", length: "04:03", src: "/res/audio/music/midnight_city.mp3" },
-  { title: "Resonance", artist: "HOME", length: "03:32", src: "/res/audio/music/midnight_city.mp3" },
-  { title: "Plastic Love", artist: "Mariya Takeuchi", length: "04:53", src: "/res/audio/music/midnight_city.mp3" }
+  { title: "California Gurls", artist: "Katy Perry (feat. Snoop Dogg)", length: "04:59", src: "/res/audio/music/CaliforniaGurls.mp3" },
+  { title: "CANYON.MID", artist: "George Stone", length: "2:01", src: "/res/audio/music/canyon.mid.mp3" },
+  { title: "Feel This Moment", artist: "Pitbull (feat. Christina Aguilera)", length: "03:50", src: "/res/audio/music/FeelThisMoment.mp3" },
+  { title: "GTA San Andreas Theme", artist: "Michael Hunte", length: "02:23", src: "/res/audio/music/GTA_SanAndreas.mp3" },
+  { title: "PASPORT.MID", artist: "Passport Designs", length: "02:03", src: "/res/audio/music/pasport.mid.mp3" },
+  { title: "Titanium", artist: "David Guetta (feat. Sia)", length: "03:57", src: "/res/audio/music/Titanium.mp3" },
+  { title: "title.wma", artist: "Stan LePard", length: "05:24", src: "/res/audio/music/title.wma.mp3" },
+  { title: "Zelda Overworld", artist: "Koji Kondo", length: "01:19", src: "/res/audio/music/ZeldaOverworld.mp3" }
 ];
 
 // --- APP STATE ---
@@ -50,7 +55,7 @@ function populatePlaylist() {
       currentIndex = index;
       loadTrack(currentIndex);
       audio.play();
-      updateStatusText(playlist[currentIndex].title.substring(0, 15).toUpperCase());
+      updateStatusText(playlist[currentIndex].title.substring(0, 21).toUpperCase());
       populatePlaylist(); 
     };
     
@@ -75,7 +80,7 @@ function loadTrack(index) {
 function togglePlay() {
   if (audio.paused) {
       audio.play();
-      updateStatusText(playlist[currentIndex].title.substring(0, 15).toUpperCase());
+      updateStatusText(playlist[currentIndex].title.substring(0, 21).toUpperCase());
   } else {
       audio.pause();
       updateStatusText("PAUSED");
