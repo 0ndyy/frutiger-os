@@ -9,73 +9,42 @@
 
 <div id="mp_9SeriesDefault_player">
   
-  <button id="mp_9SeriesDefault_btn-min" class="mp_9SeriesDefault_btn-win" title="Minimize" onclick="mp_9SeriesDefault_onMinimize()"></button>
-  <button id="mp_9SeriesDefault_btn-close" class="mp_9SeriesDefault_btn-win" title="Close" onclick="mp_9SeriesDefault_onClose()"></button>
+  <button id="mp_9SeriesDefault_btn-min" class="mp_9SeriesDefault_btn-win" title="Minimize" onclick="parent.handleWindow('.music', 'min')"></button>
+  <button id="mp_9SeriesDefault_btn-close" class="mp_9SeriesDefault_btn-win" title="Close" onclick="parent.handleWindow('.music', 'close')"></button>
 
-  <div id="mp_9SeriesDefault_screen">
-    <div class="mp_9SeriesDefault_track-item">
-      <span class="mp_9SeriesDefault_track-name">01. Midnight City</span>
-      <span class="mp_9SeriesDefault_track-artist">M83</span>
-      <span class="mp_9SeriesDefault_track-length">04:03</span>
-    </div>
+  <div id="mp_9SeriesDefault_screen" class="mp-ui-screen">
+    <!-- inject songs here -->
   </div>
 
   <div id="mp_9SeriesDefault_status-bar">
-    <span class="mp_9SeriesDefault_status-text">Ready</span>
-    <span class="mp_9SeriesDefault_status-time">00:00</span>
+    <span class="mp_9SeriesDefault_status-text mp-ui-status-text">Ready</span>
+    <span class="mp_9SeriesDefault_status-time mp-ui-status-time">00:00</span>
   </div>
 
   <div id="mp_9SeriesDefault_seek-wrapper" class="mp_9SeriesDefault_slider-container">
-    <div id="mp_9SeriesDefault_seek-fill" class="mp_9SeriesDefault_slider-fill"></div>
-    <input type="range" id="mp_9SeriesDefault_seek-bar" min="0" max="100" value="0">
+    <div id="mp_9SeriesDefault_seek-fill" class="mp_9SeriesDefault_slider-fill mp-ui-seek-fill"></div>
+    <input type="range" id="mp_9SeriesDefault_seek-bar" class="mp-ui-seek-bar" min="0" max="100" value="0" oninput="seekAudio(this.value)">
   </div>
 
-  <button id="mp_9SeriesDefault_btn-rew" class="mp_9SeriesDefault_btn-single" title="Rewind" onclick="mp_9SeriesDefault_onRewind()"></button>
-  <button id="mp_9SeriesDefault_btn-ffwd" class="mp_9SeriesDefault_btn-single" title="Fast Forward" onclick="mp_9SeriesDefault_onFastForward()"></button>
+  <button id="mp_9SeriesDefault_btn-rew" onclick="rewindAudio()"></button>
+  <button id="mp_9SeriesDefault_btn-ffwd" onclick="ffwdAudio()"></button>
 
   <div class="mp_9SeriesDefault_transports-group">
-    <button id="mp_9SeriesDefault_btn-play" class="mp_9SeriesDefault_btn-t" title="Play" onclick="mp_9SeriesDefault_onPlay()"></button>
-    <button id="mp_9SeriesDefault_btn-stop" class="mp_9SeriesDefault_btn-t" title="Stop" onclick="mp_9SeriesDefault_onStop()"></button>
-    <button id="mp_9SeriesDefault_btn-prev" class="mp_9SeriesDefault_btn-t" title="Previous" onclick="mp_9SeriesDefault_onPrev()"></button>
-    <button id="mp_9SeriesDefault_btn-next" class="mp_9SeriesDefault_btn-t" title="Next" onclick="mp_9SeriesDefault_onNext()"></button>
-    <button id="mp_9SeriesDefault_btn-mute" class="mp_9SeriesDefault_btn-t" title="Mute" onclick="mp_9SeriesDefault_onMute()"></button>
+    <button id="mp_9SeriesDefault_btn-play" class="mp_9SeriesDefault_btn-t" title="Play" onclick="togglePlay()"></button>
+    <button id="mp_9SeriesDefault_btn-stop" class="mp_9SeriesDefault_btn-t" title="Stop" onclick="stopAudio()"></button>
+    <button id="mp_9SeriesDefault_btn-prev" class="mp_9SeriesDefault_btn-t" title="Previous" onclick="prevTrack()"></button>
+    <button id="mp_9SeriesDefault_btn-next" class="mp_9SeriesDefault_btn-t" title="Next" onclick="nextTrack()"></button>
+    <button id="mp_9SeriesDefault_btn-mute" class="mp_9SeriesDefault_btn-t" title="Mute" onclick="toggleMute()"></button>
   </div>
 
   <div id="mp_9SeriesDefault_volume-wrapper" class="mp_9SeriesDefault_slider-container">
-    <div id="mp_9SeriesDefault_volume-fill" class="mp_9SeriesDefault_slider-fill"></div>
-    <input type="range" id="mp_9SeriesDefault_volume-bar" min="0" max="100" value="50">
+    <div id="mp_9SeriesDefault_volume-fill" class="mp_9SeriesDefault_slider-fill mp-ui-volume-fill"></div>
+    <input type="range" id="mp_9SeriesDefault_volume-bar" class="mp-ui-volume-bar" min="0" max="100" value="50" oninput="changeVolume(this.value)">
   </div>
 
 </div>
 
-<script>
-  function mp_9SeriesDefault_updateSliderFill(slider, fillElem) {
-    const min = slider.min || 0;
-    const max = slider.max || 100;
-    const percent = ((slider.value - min) / (max - min)) * 100;
-    fillElem.style.width = `${percent}%`;
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const seek = document.getElementById('mp_9SeriesDefault_seek-bar');
-    const seekFill = document.getElementById('mp_9SeriesDefault_seek-fill');
-    const volume = document.getElementById('mp_9SeriesDefault_volume-bar');
-    const volumeFill = document.getElementById('mp_9SeriesDefault_volume-fill');
-
-    mp_9SeriesDefault_updateSliderFill(seek, seekFill);
-    mp_9SeriesDefault_updateSliderFill(volume, volumeFill);
-
-    seek.addEventListener('input', (e) => {
-      mp_9SeriesDefault_updateSliderFill(e.target, seekFill);
-      mp_9SeriesDefault_onSeekChange(e.target.value);
-    });
-
-    volume.addEventListener('input', (e) => {
-      mp_9SeriesDefault_updateSliderFill(e.target, volumeFill);
-      mp_9SeriesDefault_onVolumeChange(e.target.value);
-    });
-  });
-</script>
+<script src="../../../js/mp-app.js"></script>
 
 </body>
 </html>

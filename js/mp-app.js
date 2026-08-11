@@ -1,0 +1,164 @@
+// --- PLAYLIST DATA ---
+const playlist = [
+  { title: "Midnight City", artist: "M83", length: "04:03", src: "/res/audio/music/midnight_city.mp3" },
+  { title: "Resonance", artist: "HOME", length: "03:32", src: "/res/audio/music/midnight_city.mp3" },
+  { title: "Plastic Love", artist: "Mariya Takeuchi", length: "04:53", src: "/res/audio/music/midnight_city.mp3" }
+];
+
+// --- APP STATE ---
+let currentIndex = 0;
+const audio = new Audio();
+audio.volume = 0.5; // Default 50%
+
+// --- INITIALIZATION ---
+document.addEventListener('DOMContentLoaded', () => {
+  populatePlaylist();
+  loadTrack(currentIndex);
+  
+  // Set initial volume slider visuals universally
+  const volBar = document.querySelector('.mp-ui-volume-bar');
+  const volFill = document.querySelector('.mp-ui-volume-fill');
+  if (volBar && volFill) {
+      volBar.value = 50;
+      updateSliderFill(volBar, volFill);
+  }
+});
+
+// --- CORE FUNCTIONS ---
+function populatePlaylist() {
+  const screenContainer = document.querySelector('.mp-ui-screen');
+  if (!screenContainer) return;
+
+  screenContainer.innerHTML = ""; 
+  
+  playlist.forEach((track, index) => {
+    const trackItem = document.createElement('div');
+    // Using a generic class for the layout, but you can let your skin's CSS handle it
+    trackItem.className = 'mp_9SeriesDefault_track-item'; 
+    
+    if (index === currentIndex) {
+      trackItem.style.backgroundColor = 'rgba(0, 255, 0, 0.2)'; // Generic highlight
+    }
+    
+    trackItem.innerHTML = `
+      <span class="mp_9SeriesDefault_track-name">${(index + 1).toString().padStart(2, '0')}. ${track.title}</span>
+      <span class="mp_9SeriesDefault_track-artist">${track.artist}</span>
+      <span class="mp_9SeriesDefault_track-length">${track.length}</span>
+    `;
+    
+    trackItem.onclick = () => {
+      currentIndex = index;
+      loadTrack(currentIndex);
+      audio.play();
+      updateStatusText(playlist[currentIndex].title.substring(0, 15).toUpperCase());
+      populatePlaylist(); 
+    };
+    
+    screenContainer.appendChild(trackItem);
+  });
+}
+
+function loadTrack(index) {
+  audio.src = playlist[index].src;
+  audio.load();
+  updateStatusText("READY");
+  
+  const seekBar = document.querySelector('.mp-ui-seek-bar');
+  const seekFill = document.querySelector('.mp-ui-seek-fill');
+  if (seekBar && seekFill) {
+      seekBar.value = 0;
+      updateSliderFill(seekBar, seekFill, 0);
+  }
+}
+
+// --- GLOBAL ONCLICK ACTIONS ---
+function togglePlay() {
+  if (audio.paused) {
+      audio.play();
+      updateStatusText(playlist[currentIndex].title.substring(0, 15).toUpperCase());
+  } else {
+      audio.pause();
+      updateStatusText("PAUSED");
+  }
+}
+
+function stopAudio() {
+  audio.pause();
+  audio.currentTime = 0;
+  updateStatusText("STOPPED");
+}
+
+function nextTrack() {
+  currentIndex = (currentIndex + 1) % playlist.length;
+  loadTrack(currentIndex);
+  audio.play();
+  populatePlaylist();
+}
+
+function prevTrack() {
+  currentIndex = (currentIndex - 1 + playlist.length) % playlist.length;
+  loadTrack(currentIndex);
+  audio.play();
+  populatePlaylist();
+}
+
+function toggleMute() {
+  audio.muted = !audio.muted;
+  updateStatusText(audio.muted ? "MUTED" : "UNMUTED");
+}
+
+function rewindAudio() { audio.currentTime = Math.max(0, audio.currentTime - 5); }
+function ffwdAudio() { audio.currentTime = Math.min(audio.duration, audio.currentTime + 5); }
+
+function seekAudio(value) {
+  const seekFill = document.querySelector('.mp-ui-seek-fill');
+  const seekBar = document.querySelector('.mp-ui-seek-bar');
+  updateSliderFill(seekBar, seekFill);
+  if (audio.duration) {
+    audio.currentTime = (value / 100) * audio.duration;
+  }
+}
+
+function changeVolume(value) {
+  const volFill = document.querySelector('.mp-ui-volume-fill');
+  const volBar = document.querySelector('.mp-ui-volume-bar');
+  updateSliderFill(volBar, volFill);
+  audio.volume = value / 100;
+  if (audio.muted && audio.volume > 0) audio.muted = false;
+}
+
+// --- UTILITIES ---
+function updateStatusText(text) {
+  const statusEl = document.querySelector('.mp-ui-status-text');
+  if (statusEl) statusEl.textContent = text;
+}
+
+function updateSliderFill(slider, fillElem, overridePercent = null) {
+  if (!slider || !fillElem) return;
+  const min = slider.min || 0;
+  const max = slider.max || 100;
+  const percent = overridePercent !== null ? overridePercent : ((slider.value - min) / (max - min)) * 100;
+  fillElem.style.width = `${percent}%`;
+}
+
+// --- AUDIO EVENTS ---
+audio.addEventListener('timeupdate', () => {
+  const statusTime = document.querySelector('.mp-ui-status-time');
+  if (statusTime) {
+      const m = Math.floor(audio.currentTime / 60);
+      const s = Math.floor(audio.currentTime % 60);
+      statusTime.textContent = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+  }
+  
+  if (audio.duration) {
+    const progressPercent = (audio.currentTime / audio.duration) * 100;
+    const seekBar = document.querySelector('.mp-ui-seek-bar');
+    const seekFill = document.querySelector('.mp-ui-seek-fill');
+    if (seekBar && seekFill) {
+        seekBar.value = progressPercent;
+        updateSliderFill(seekBar, seekFill, progressPercent);
+    }
+  }
+});
+
+audio.addEventListener('ended', nextTrack);
