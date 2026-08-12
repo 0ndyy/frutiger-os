@@ -1,13 +1,13 @@
 // --- PLAYLIST DATA ---
 const playlist = [
-  { title: "California Gurls", artist: "Katy Perry (feat. Snoop Dogg)", length: "04:59", src: "/res/audio/music/CaliforniaGurls.mp3" },
-  { title: "CANYON.MID", artist: "George Stone", length: "2:01", src: "/res/audio/music/canyon.mid.mp3" },
-  { title: "Feel This Moment", artist: "Pitbull (feat. Christina Aguilera)", length: "03:50", src: "/res/audio/music/FeelThisMoment.mp3" },
-  { title: "GTA San Andreas Theme", artist: "Michael Hunte", length: "02:23", src: "/res/audio/music/GTA_SanAndreas.mp3" },
-  { title: "PASPORT.MID", artist: "Passport Designs", length: "02:03", src: "/res/audio/music/pasport.mid.mp3" },
-  { title: "Titanium", artist: "David Guetta (feat. Sia)", length: "03:57", src: "/res/audio/music/Titanium.mp3" },
-  { title: "title.wma", artist: "Stan LePard", length: "05:24", src: "/res/audio/music/title.wma.mp3" },
-  { title: "Zelda Overworld", artist: "Koji Kondo", length: "01:19", src: "/res/audio/music/ZeldaOverworld.mp3" }
+  { title: "California Gurls", artist: "Katy Perry (feat. Snoop Dogg)", length: "04:59", src: "../../audio/music/CaliforniaGurls.mp3" },
+  { title: "CANYON.MID", artist: "George Stone", length: "2:01", src: "../../audio/music/canyon.mid.mp3" },
+  { title: "Feel This Moment", artist: "Pitbull (feat. Christina Aguilera)", length: "03:50", src: "../../audio/music/FeelThisMoment.mp3" },
+  { title: "GTA San Andreas Theme", artist: "Michael Hunte", length: "02:23", src: "../../audio/music/GTA_SanAndreas.mp3" },
+  { title: "PASPORT.MID", artist: "Passport Designs", length: "02:03", src: "../../audio/music/pasport.mid.mp3" },
+  { title: "Titanium", artist: "David Guetta (feat. Sia)", length: "03:57", src: "../../audio/music/Titanium.mp3" },
+  { title: "title.wma", artist: "Stan LePard", length: "05:24", src: "../../audio/music/title.wma.mp3" },
+  { title: "Zelda Overworld", artist: "Koji Kondo", length: "01:19", src: "../../audio/music/ZeldaOverworld.mp3" }
 ];
 
 
