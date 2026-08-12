@@ -10,17 +10,18 @@ const playlist = [
   { title: "Zelda Overworld", artist: "Koji Kondo", length: "01:19", src: "/res/audio/music/ZeldaOverworld.mp3" }
 ];
 
-// --- APP STATE ---
+
+
 let currentIndex = 0;
 const audio = new Audio();
-audio.volume = 0.5; // Default 50%
+audio.volume = 0.5;
 
-// --- INITIALIZATION ---
+
+
 document.addEventListener('DOMContentLoaded', () => {
   populatePlaylist();
   loadTrack(currentIndex);
   
-  // Set initial volume slider visuals universally
   const volBar = document.querySelector('.mp-ui-volume-bar');
   const volFill = document.querySelector('.mp-ui-volume-fill');
   if (volBar && volFill) {
@@ -29,7 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// --- CORE FUNCTIONS ---
+
+
+
+
 function populatePlaylist() {
   const screenContainer = document.querySelector('.mp-ui-screen');
   if (!screenContainer) return;
@@ -38,11 +42,10 @@ function populatePlaylist() {
   
   playlist.forEach((track, index) => {
     const trackItem = document.createElement('div');
-    // Using a generic class for the layout, but you can let your skin's CSS handle it
     trackItem.className = 'mp_9SeriesDefault_track-item'; 
     
     if (index === currentIndex) {
-      trackItem.style.backgroundColor = 'rgba(0, 255, 0, 0.2)'; // Generic highlight
+      trackItem.style.backgroundColor = 'rgba(0, 255, 0, 0.2)';
     }
     
     trackItem.innerHTML = `
@@ -76,7 +79,10 @@ function loadTrack(index) {
   }
 }
 
-// --- GLOBAL ONCLICK ACTIONS ---
+
+
+
+
 function togglePlay() {
   if (audio.paused) {
       audio.play();
@@ -132,7 +138,8 @@ function changeVolume(value) {
   if (audio.muted && audio.volume > 0) audio.muted = false;
 }
 
-// --- UTILITIES ---
+
+
 function updateStatusText(text) {
   const statusEl = document.querySelector('.mp-ui-status-text');
   if (statusEl) statusEl.textContent = text;
@@ -146,7 +153,8 @@ function updateSliderFill(slider, fillElem, overridePercent = null) {
   fillElem.style.width = `${percent}%`;
 }
 
-// --- AUDIO EVENTS ---
+
+
 audio.addEventListener('timeupdate', () => {
   const statusTime = document.querySelector('.mp-ui-status-time');
   if (statusTime) {
