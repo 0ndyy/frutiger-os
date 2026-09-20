@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WMP Skin - Pulsar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="mp_Pulsar_player">
+
+    <div id="mp_Pulsar_glare"></div>
+
+    <!-- navigation -->
+    <button id="mp_Pulsar_btn-unknown" class="mp_Pulsar_btn-nav" title="Unknown" onclick=""></button> <!-- I'll need to figure out what to do with this button -->
+    <button id="mp_Pulsar_btn-min" class="mp_Pulsar_btn-nav" title="Minimize" onclick="parent.handleWindow('.music', 'min')"></button>
+    <button id="mp_Pulsar_btn-close" class="mp_Pulsar_btn-nav" title="Close" onclick="stopAudio(); parent.handleWindow('.music', 'close')"></button>
+
+    <!-- buttons -->
+    <button id="mp_Pulsar_btn-play" class="mp_Pulsar_btn-t" title="Play" onclick="togglePlay()"></button>
+    <button id="mp_Pulsar_btn-stop" class="mp_Pulsar_btn-t" title="Stop" onclick="stopAudio()"></button>
+    <button id="mp_Pulsar_btn-prev" class="mp_Pulsar_btn-t" title="Previous" onclick="prevTrack()"></button>
+    <button id="mp_Pulsar_btn-next" class="mp_Pulsar_btn-t" title="Next" onclick="nextTrack()"></button>
+
+    <button id="mp_Pulsar_btn-mute" class="mp_Pulsar_btn-t" title="Mute" onclick="toggleMute()"></button>
+
+</div>
+
+<script src="../../../js/mp-app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: max-content;
+    height: max-content;
+}
+
+/* --- MAIN PLAYER CONTAINER --- */
+#mp_Pulsar_player {
+    position: relative;
+    width: 347px;
+    height: 319px;
+    background: url('background.png') no-repeat;
+}
+
+#mp_Pulsar_player button {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    cursor: pointer;
+}
+
+#mp_Pulsar_glare {
+    position: absolute;
+    left: 166px;
+    top: 34px;
+    width: 100%;
+    height: 100%;
+    background: url('glare.png') no-repeat;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+/* --- NAVIGATION --- */
+.mp_Pulsar_btn-nav {
+    position: absolute;
+    width: 75px;
+    height: 24px;
+    top: 54px;
+    left: 213px;
+    background: transparent;
+    z-index: 100;
+}
+
+.mp_Pulsar_btn-nav:hover { background: url('navigation_hover.png'); }
+.mp_Pulsar_btn-nav:active { background: url('navigation_do.png'); }
+
+#mp_Pulsar_btn-unknown {
+    clip-path: polygon(17% 16%, 47% 0%, 33% 75%, 0% 100%);
+}
+
+#mp_Pulsar_btn-min {
+    clip-path: polygon(42% 16%, 49% 0%, 58% 17%, 68% 73%, 33% 72%);
+}
+
+#mp_Pulsar_btn-close {
+    clip-path: polygon(53% 3%, 84% 5%, 100% 100%, 66% 74%);
+}
+
+/* --- TRANSPORTS --- */
+.mp_Pulsar_btn-t {
+    position: absolute;
+    width: 160px;
+    height: 156px;
+    top: 135px;
+    left: 39px;
+    background: transparent;
+    z-index: 100;
+}
+
+.mp_Pulsar_btn-t:hover { background: url('buttons_hov.png'); }
+.mp_Pulsar_btn-t:active { background: url('buttons_do.png'); }
+
+#mp_Pulsar_btn-play {
+    clip-path: polygon(0% 17%, 3% 10%, 20% 3%, 37% 2%, 48% 20%, 35% 19%, 25% 21%, 18% 27%, 15% 34%);
+}
+
+#mp_Pulsar_btn-stop {
+    clip-path: polygon(15% 33%, 18% 27%, 24% 22%, 34% 19%, 47% 20%, 57% 38%, 48% 39%, 39% 42%, 34% 47%, 32% 52%);
+}
+
+#mp_Pulsar_btn-prev {
+    clip-path: polygon(59% 57%, 54% 61%, 49% 67%, 31% 51%, 38% 43%, 48% 39%, 57% 38%, 65% 54%);
+}
+
+#mp_Pulsar_btn-next {
+    clip-path: polygon(75% 73%, 78% 77%, 67% 81%, 50% 68%, 54% 61%, 60% 56%, 67% 54%, 79% 71%);
+}
