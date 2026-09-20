@@ -11,10 +11,29 @@
 
     <div id="mp_Pulsar_glare"></div>
 
+    <div id="mp_Pulsar_status-display">
+        <span class="mp-ui-status-text">READY</span>
+    </div>
+
     <!-- navigation -->
     <button id="mp_Pulsar_btn-unknown" class="mp_Pulsar_btn-nav" title="Unknown" onclick=""></button> <!-- I'll need to figure out what to do with this button -->
     <button id="mp_Pulsar_btn-min" class="mp_Pulsar_btn-nav" title="Minimize" onclick="parent.handleWindow('.music', 'min')"></button>
     <button id="mp_Pulsar_btn-close" class="mp_Pulsar_btn-nav" title="Close" onclick="stopAudio(); parent.handleWindow('.music', 'close')"></button>
+
+    <button id="mp_Pulsar_btn-mute" class="mp_Pulsar_btn-t" title="Mute" onclick="toggleMute()"></button>
+
+    <!-- sliders -->
+    <div id="mp_Pulsar_seek-wrapper" class="mp_Pulsar_slider-container">
+        <div id="mp_Pulsar_seek-sprite" class="mp_Pulsar_sprite"></div>
+        <div class="mp-ui-seek-fill" style="display:none;"></div>
+        <input type="range" orient="vertical" id="mp_Pulsar_seek-bar" class="mp-ui-seek-bar" min="0" max="100" value="0" oninput="seekAudio(this.value)">
+    </div>
+
+    <div id="mp_Pulsar_volume-wrapper" class="mp_Pulsar_slider-container">
+        <div id="mp_Pulsar_volume-sprite" class="mp_Pulsar_sprite"></div>
+        <div class="mp-ui-volume-fill" style="display:none;"></div>
+        <input type="range" orient="vertical" id="mp_Pulsar_volume-bar" class="mp-ui-volume-bar" min="0" max="100" value="50" oninput="changeVolume(this.value)">
+    </div>
 
     <!-- buttons -->
     <button id="mp_Pulsar_btn-play" class="mp_Pulsar_btn-t" title="Play" onclick="togglePlay()"></button>
@@ -22,9 +41,73 @@
     <button id="mp_Pulsar_btn-prev" class="mp_Pulsar_btn-t" title="Previous" onclick="prevTrack()"></button>
     <button id="mp_Pulsar_btn-next" class="mp_Pulsar_btn-t" title="Next" onclick="nextTrack()"></button>
 
-    <button id="mp_Pulsar_btn-mute" class="mp_Pulsar_btn-t" title="Mute" onclick="toggleMute()"></button>
-
 </div>
+
+<!--inbeded script to slice textures-->
+<script>
+    function updatePulsarSprites() {
+        const frameWidth = 79; 
+        const maxFrames = 12;  
+        const seekInput = document.querySelector('.mp-ui-seek-bar');
+        const seekSprite = document.getElementById('mp_Pulsar_seek-sprite');
+        if (seekInput && seekSprite) {
+            const max = seekInput.max || 100;
+            let percent = seekInput.value / max;
+            percent = Math.pow(percent, 0.8); //count in changing size of boxs
+            const frame = Math.round(percent * maxFrames);
+            seekSprite.style.backgroundPosition = `-${frame * frameWidth}px 0px`;
+        }
+
+        const volInput = document.querySelector('.mp-ui-volume-bar');
+        const volSprite = document.getElementById('mp_Pulsar_volume-sprite');
+        if (volInput && volSprite) {
+            const max = volInput.max || 100;
+            let percent = volInput.value / max;
+            percent = Math.pow(percent, 0.8); //count in changing size of boxs
+            const frame = Math.round(percent * maxFrames);
+            volSprite.style.backgroundPosition = `-${frame * frameWidth}px 0px`;
+        }
+    }
+
+    document.addEventListener('input', (e) => {
+        if (e.target.type === 'range') updatePulsarSprites();
+    });
+    setInterval(updatePulsarSprites, 50);
+
+    //sliding text
+    const statusDisplay = document.getElementById('mp_Pulsar_status-display');
+    const statusText = document.querySelector('.mp-ui-status-text');
+
+    if (statusDisplay && statusText) {
+        const observer = new MutationObserver(() => {
+            observer.disconnect();
+            let currentText = statusText.textContent;
+            const systemMessages = ["READY", "PAUSED", "STOPPED", "MUTED", "UNMUTED"];
+            
+            if (!systemMessages.includes(currentText) && !currentText.includes('[')) {
+                if (typeof playlist !== 'undefined' && typeof currentIndex !== 'undefined') {
+                    const track = playlist[currentIndex];
+                    currentText = `${track.title.toUpperCase()} [${track.artist.toUpperCase()}]`;
+                    statusText.textContent = currentText;
+                }
+            }
+            
+            statusText.classList.remove('scrolling');
+            
+            if (statusText.scrollWidth > statusDisplay.clientWidth) {
+                const gap = "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0";
+                statusText.textContent = currentText + gap + currentText + gap;
+                const distance = statusText.scrollWidth / 2;
+                const speed = 35;
+                const duration = distance / speed; 
+                statusText.style.setProperty('--scroll-duration', `${duration}s`);
+                setTimeout(() => statusText.classList.add('scrolling'), 10);
+            }
+            observer.observe(statusText, { childList: true, characterData: true, subtree: true });
+        });
+        observer.observe(statusText, { childList: true, characterData: true, subtree: true });
+    }
+</script>
 
 <script src="../../../js/mp-app.js"></script>
 

@@ -103,6 +103,7 @@ function nextTrack() {
   currentIndex = (currentIndex + 1) % playlist.length;
   loadTrack(currentIndex);
   audio.play();
+  updateStatusText(playlist[currentIndex].title.substring(0, 21).toUpperCase());
   populatePlaylist();
 }
 
@@ -110,6 +111,7 @@ function prevTrack() {
   currentIndex = (currentIndex - 1 + playlist.length) % playlist.length;
   loadTrack(currentIndex);
   audio.play();
+  updateStatusText(playlist[currentIndex].title.substring(0, 21).toUpperCase());
   populatePlaylist();
 }
 

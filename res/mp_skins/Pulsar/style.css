@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
 html, body {
     margin: 0;
     padding: 0;
@@ -5,7 +7,7 @@ html, body {
     height: max-content;
 }
 
-/* --- MAIN PLAYER CONTAINER --- */
+/* --- MAIN PLAYER --- */
 #mp_Pulsar_player {
     position: relative;
     width: 347px;
@@ -29,6 +31,40 @@ html, body {
     background: url('glare.png') no-repeat;
     pointer-events: none;
     z-index: 1000;
+}
+
+/* --- STATUS TEXT --- */
+#mp_Pulsar_status-display {
+    --container-width: 100px; 
+    position: absolute;
+    top: 116px; 
+    left: 200px; 
+    width: var(--container-width);
+    overflow: hidden;
+    z-index: 50; 
+}
+
+.mp-ui-status-text {
+    font-family: 'VT323', monospace;
+    color: white;
+    text-shadow: none;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    min-width: 100%;
+    display: inline-block;
+    white-space: pre;
+}
+
+.mp-ui-status-text.scrolling {
+    animation: pulsar-move var(--scroll-duration, 6s) linear infinite;
+    animation-delay: 1s; 
+}
+
+@keyframes pulsar-move {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
 /* --- NAVIGATION --- */
@@ -71,8 +107,55 @@ html, body {
 #mp_Pulsar_btn-mute:hover { background: url('mute_hov.png'); }
 #mp_Pulsar_btn-mute:active { background: url('mute_do.png'); top: 188px; left: 241px;}
 
-/* --- SEEKBARS --- */
+/* --- SLIDERS --- */
+.mp_Pulsar_slider-container {
+    position: absolute;
+    width: 79px; 
+    height: 136px;
+}
 
+.mp_Pulsar_sprite {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    pointer-events: none;
+}
+
+#mp_Pulsar_player input[type="range"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0; 
+    cursor: pointer;
+    z-index: 2;
+    -webkit-appearance: slider-vertical;
+    appearance: slider-vertical;
+    writing-mode: bt-lr;
+}
+
+#mp_Pulsar_seek-wrapper {
+    top: 67px;
+    left: 250px; 
+}
+#mp_Pulsar_seek-sprite {
+    background-image: url('seek.png');
+    background-position: 0px 0px; 
+}
+
+#mp_Pulsar_volume-wrapper {
+    top: 67px; 
+    left: 172px; 
+}
+#mp_Pulsar_volume-sprite {
+    background-image: url('vol.png');
+    background-position: -474px 0px; 
+}
 
 /* --- TRANSPORTS --- */
 .mp_Pulsar_btn-t {
