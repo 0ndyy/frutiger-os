@@ -57,6 +57,23 @@ html, body {
     clip-path: polygon(53% 3%, 84% 5%, 100% 100%, 66% 74%);
 }
 
+/* --- MISC --- */
+#mp_Pulsar_btn-mute{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 185px;
+    left: 240px;
+    background: transparent;
+    z-index: 100;
+}
+
+#mp_Pulsar_btn-mute:hover { background: url('mute_hov.png'); }
+#mp_Pulsar_btn-mute:active { background: url('mute_do.png'); top: 188px; left: 241px;}
+
+/* --- SEEKBARS --- */
+
+
 /* --- TRANSPORTS --- */
 .mp_Pulsar_btn-t {
     position: absolute;
@@ -84,5 +101,5 @@ html, body {
 }
 
 #mp_Pulsar_btn-next {
-    clip-path: polygon(75% 73%, 78% 77%, 67% 81%, 50% 68%, 54% 61%, 60% 56%, 67% 54%, 79% 71%);
+    clip-path: polygon(75% 73%, 70% 77%, 67% 81%, 50% 68%, 54% 61%, 60% 56%, 67% 54%, 79% 71%);
 }
