@@ -183,7 +183,7 @@ audio.addEventListener('timeupdate', () => {
 
 audio.addEventListener('ended', nextTrack);
 
-function changeSkin(skinId){
+function mpChangeSkin(skinId){
   _iframe = document.querySelector("#mp-update-iframe");
   _holder = document.querySelector("#mp-update-holder");
 

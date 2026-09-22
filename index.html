@@ -116,6 +116,14 @@
                             </div>
                         </button>
 
+                        <button type="button" onclick="switchSettingsView('settings-mp')" style="display: flex; gap: 15px; align-items: flex-start; background: none; border: none; padding: 0; margin: 0; font: inherit; text-align: left; cursor: pointer; width: 100%;">
+                            <img src="./res/icons/app/mediaplayer.webp" style="width: 36px; height: 36px; flex-shrink: 0;">
+                            <div>
+                                <span style="display: block; font-size: 14px; font-weight: 600; color: #004687; text-decoration: none;">Music Player Options</span>
+                                <p style="margin: 4px 0 0 0; font-size: 11px; color: #555;">Edit Skins</p>
+                            </div>
+                        </button>
+
                     </div>
                 </div>
 
@@ -173,6 +181,18 @@
                         <button class="aero-btn" style="background-image: url('./res/wp/wp7.jpg'); background-size: cover; background-position: center; width: 120px; height: 75px;" onclick="changeWallpaper('./res/wp/wp7.jpg')"></button>
                         <button class="aero-btn" style="background-image: url('./res/wp/wp8.jpg'); background-size: cover; background-position: center; width: 120px; height: 75px;" onclick="changeWallpaper('./res/wp/wp8.jpg')"></button>
                         <button class="aero-btn" style="background-image: url('./res/wp/wp9.jpg'); background-size: cover; background-position: center; width: 120px; height: 75px;" onclick="changeWallpaper('./res/wp/wp9.jpg')"></button>
+                    </div>
+                </div>
+
+                <!-- mp section  -->
+                <div id="settings-mp" class="window-content settingsView" style="display: none; padding: 20px;">
+                    <h2 style="margin: 0 0 10px 0; font-size: 18px; font-weight: 400; color: #004687;">Appearance and Personalization</h2>
+                    <p style="margin-bottom: 15px; font-size: 12px; color: #555;">Click an image below to change your desktop background.</p>
+                    <hr style="border: 0; border-top: 1px solid #ddd; margin-bottom: 15px;">
+                    
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                        <button class="aero-btn" style="background-image: url('./res/mp_skins/9SeriesDefault/preview.png'); background-size: cover; background-position: center; width: 136px; height: 136px;" onclick="mpChangeSkin(0)"></button>
+                        <button class="aero-btn" style="background-image: url('./res/mp_skins/Pulsar/preview.png'); background-size: cover; background-position: center; width: 136px; height: 136px;" onclick="mpChangeSkin(1)"></button>
                     </div>
                 </div>
 
@@ -267,6 +287,7 @@
     <script src="script.js"></script>
     <script src="js/settings-app.js"></script>
     <script src="js/note-app.js"></script>
+    <script src="js/mp-app.js"></script>
 </body>
 
 </html>

@@ -10,6 +10,8 @@ function switchSettingsView(view) {
         document.querySelector("#settingsNavigation").innerText = "Home>Appearance & Personalization";
     } else if (view == 'settings-general') {
         document.querySelector("#settingsNavigation").innerText = "Home>General";
+    } else if (view == 'settings-mp') {
+        document.querySelector("#settingsNavigation").innerText = "Home>MP Options";
     }
 }
 
