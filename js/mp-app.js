@@ -10,6 +10,10 @@ const playlist = [
   { title: "Zelda Overworld", artist: "Koji Kondo", length: "01:19", src: "../../audio/music/ZeldaOverworld.mp3" }
 ];
 
+const skins = [
+  { name: "9SeriesDefault", width: ""}
+];
+
 
 
 let currentIndex = 0;

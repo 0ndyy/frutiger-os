@@ -95,8 +95,7 @@
             statusText.classList.remove('scrolling');
             
             if (statusText.scrollWidth > statusDisplay.clientWidth) {
-                const gap = "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0";
-                statusText.textContent = currentText + gap + currentText + gap;
+                statusText.textContent = currentText + "           " + currentText + "           ";
                 const distance = statusText.scrollWidth / 2;
                 const speed = 35;
                 const duration = distance / speed; 
