@@ -11,7 +11,8 @@ const playlist = [
 ];
 
 const skins = [
-  { name: "9SeriesDefault", width: ""}
+  { name: "9SeriesDefault", width: "346px", height:"349px", holderWidth: "200px", holderHeight:"30px", holderTop: "0", holderLeft:"100px", source:"res/mp_skins/9SeriesDefault/index.html"},
+  { name: "Pulsar", width: "347px", height:"319px", holderWidth: "150px", holderHeight:"80px", holderTop: "0", holderLeft:"0", source:"res/mp_skins/Pulsar/index.html"}
 ];
 
 
