@@ -182,3 +182,17 @@ audio.addEventListener('timeupdate', () => {
 });
 
 audio.addEventListener('ended', nextTrack);
+
+function changeSkin(skinId){
+  _iframe = document.querySelector("#mp-update-iframe");
+  _holder = document.querySelector("#mp-update-holder");
+
+  _iframe.style.width = skins[skinId].width;
+  _iframe.style.height = skins[skinId].height;
+  _iframe.src = skins[skinId].source;
+
+  _holder.style.width = skins[skinId].holderWidth;
+  _holder.style.height = skins[skinId].holderHeight;
+  _holder.style.top = skins[skinId].holderTop;
+  _holder.style.left = skins[skinId].holderLeft;
+}
