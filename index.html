@@ -38,6 +38,11 @@
             <img src="./res/icons/app/mediaplayer.webp" alt="Music Player">
             <p>Music Player</p>
         </button>
+
+        <button class="desktopApp" onClick="handleWindow('.games', 'open')">
+            <img src="./res/icons/app/ybox.png" alt="ybox">
+            <p>YBOX</p>
+        </button>
     </div>
 
 
@@ -261,7 +266,7 @@
     </div>
 
 
-    <!-- MUSIC WINDOW (!!!dragable holder size and iframe size needs to be updated with iframe src)-->
+    <!-- MUSIC WINDOW -->
     <div class="window music" style="display:none;">
         <div class="dragable-holder" id="mp-update-holder" style="position: absolute; top: 0; left: 100px; width: 200px; height: 30px;"> <!--update this-->
         <div class="aero-title" style="display:none;"><span>Music Player</span></div>
@@ -275,6 +280,38 @@
 
         <iframe id="mp-update-iframe" src="res/mp_skins/9SeriesDefault/index.html" style="width:346px; height:349px;" scrolling="no"></iframe> <!--update this-->
         
+    </div>
+
+
+    <!--GAMES WINDOW-->
+    <div class="window games" style="display:flex">
+        <div class="dragable-holder">
+            <div class="aero-title">
+                    <img src="./res/icons/app/ybox.png" class="window-title-icon" alt="">
+                    <span>YBOX</span>
+            </div>
+            <div class="aero-controls">
+                <button class="control-btn min" aria-label="Minimize"></button>
+                <button class="control-btn max" aria-label="Maximize"></button>
+                <button class="control-btn close" aria-label="Close"></button>
+            </div>
+        </div>
+        
+        <div class="window-topbar blur-overlay" style="display: flex; justify-content: space-between; align-items: center; height: 50px; border-radius:5px 5px 0px 0px; padding: 10px; background: linear-gradient(0deg,rgba(23, 59, 23, 1) 0%, rgba(23, 23, 23, 1) 70%);">
+            <h4 class="games-app-toptext" id="games-app-gamertag" contenteditable="true">User</h2>
+            <img  src="res/icons/app/ybox.png" style="width: 30px; height: 30px; position: absolute; left: 50%; top:50%; transform: translate(-50%, -50%); z-index: 3;">
+            <h5 class="games-app-toptext" id="games-app-score"">Score: 1,234,555Y</h2>
+        </div>
+
+        <div class="window-body" style="border-radius:0px 0px 5px 5px; background-color: #171717;">
+                <div class="window-main" id="games-grid">
+                    <div class="games-grid-item">
+                        <img src="path/to/image1.jpg" alt="Game Title">
+                        <div class="games-grid-item-gloss"></div>
+                    </div>
+                </div>
+
+            </div>
     </div>
     
 
