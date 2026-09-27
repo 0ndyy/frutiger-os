@@ -158,8 +158,21 @@ body {
         linear-gradient(to bottom in oklch, rgba(158, 173, 188, 0.4) 60%, rgba(255, 255, 255, 0.25));
 }
 
+#desktopApps {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    height: 90vh;     
+    padding-top: 8px;
+    padding-left: 8px;
+    box-sizing: border-box;
+}
+
 .desktopApp {
-    display: block;
+    display: inline-flex; 
+    flex-direction: column;
+    align-items: center;
     background: transparent;
     border: 1px solid transparent;
     cursor: pointer;
@@ -168,7 +181,6 @@ body {
     padding: 2px 15px 0px 15px;
     margin: 7px 1px 15px 1px;
     width: 84px;
-    
     box-sizing: border-box;
 }
 
