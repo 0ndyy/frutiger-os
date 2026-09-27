@@ -297,18 +297,46 @@
             </div>
         </div>
         
-        <div class="window-topbar blur-overlay" style="display: flex; justify-content: space-between; align-items: center; height: 50px; border-radius:5px 5px 0px 0px; padding: 10px; background: linear-gradient(0deg,rgba(23, 59, 23, 1) 0%, rgba(23, 23, 23, 1) 70%);">
+        <div class="window-topbar blur-overlay" style="display: flex; justify-content: space-between; align-items: center; height: 50px; border-radius:5px 5px 0px 0px; padding: 10px; background: linear-gradient(0deg,rgba(104, 184, 0, 1) 0%, rgba(38, 74, 0, 1) 24%, rgba(23, 23, 23, 1) 41%);">
             <h4 class="games-app-toptext" id="games-app-gamertag" contenteditable="true">User</h2>
             <img  src="res/icons/app/ybox.png" style="width: 30px; height: 30px; position: absolute; left: 50%; top:50%; transform: translate(-50%, -50%); z-index: 3;">
             <h5 class="games-app-toptext" id="games-app-score"">Score: 1,234,555Y</h2>
         </div>
 
         <div class="window-body" style="border-radius:0px 0px 5px 5px; background-color: #171717;">
-                <div class="window-main" id="games-grid">
+            <div class="window-main" id="games-section-main" style="flex-direction: column;">
+                <div id="games-grid">
                     <!--games will be populated here-->
                 </div>
-
+                <div class="games-details">
+                    <div class="games-info">
+                        <h2 id="games-title">Game Title</h2>
+                        <p id="games-description">Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
+                        <button class="aero-btn btn-ybox" style="margin-top:auto;" onclick="startGame();">Start Game</button>
+                    </div>
+                    <div class="games-media">
+                        <img id="games-screenshot" src="https://placehold.co/400x250">
+                    </div>
+                </div>
             </div>
+            <div class="window-main" id="games-section-game" style="display:none; flex-direction: column; padding: 15px; color: white;">
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                    <button class="aero-btn btn-ybox" onclick="backToMain()">← Home</button>
+                    <h2 id="active-game-title" style="margin: 0;">Game Title</h2>
+                </div>
+                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                    <div style="flex: 2; min-width: 300px; display: flex; flex-direction: column; gap: 15px;">
+                        <iframe id="active-game-iframe" src="" style="width: 100%; height: 400px; border: 1px solid #444; border-radius: 5px; background: black;"></iframe>                        
+                        <div style="background-color: #222; padding: 15px; border-radius: 5px;">
+                            <p id="active-game-desc" style="margin-top: 0; line-height: 1.4;"></p>
+                            <p style="margin-bottom: 5px;"><strong>Release Date: </strong> <span id="active-game-date"></span></p>
+                            <p style="margin-bottom: 0;"><strong>Controls: </strong> <span id="active-game-controls"></span></p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
     </div>
     
 
@@ -321,8 +349,8 @@
     <script src="script.js"></script>
     <script src="js/settings-app.js"></script>
     <script src="js/note-app.js"></script>
-    <script src="js/mp-app.js"></script>
     <script src="js/games-app.js"></script>
+    <script src="js/mp-app.js"></script>
 </body>
 
 </html>
