@@ -25,6 +25,11 @@
             <p >Control Panel</p>
         </button>
 
+        <button class="desktopApp" onClick="handleWindow('.browser', 'open')">
+            <img src="./res/icons/app/internet.ico">
+            <p >Internet</p>
+        </button>
+
         <button class="desktopApp" onClick="handleWindow('.notepad', 'open')">
             <img src="./res/icons/app/notepad.webp" >
             <p >Notepad</p>
@@ -353,6 +358,52 @@
         </div>
     </div>
 
+    <!--BROWSER WINDOW-->
+    <div class="window browser" style="display:none;">
+        <div class="dragable-holder">
+            <div class="aero-title">
+                <img src="/res/icons/app/internet.ico" class="window-title-icon" alt="">
+                <span>Internet Browser</span>
+            </div>
+            <div class="aero-controls">
+                <button class="control-btn min"></button>
+                <button class="control-btn max"></button>
+                <button class="control-btn close"></button>
+            </div>
+        </div>
+        
+        <div class="window-topbar blur-overlay" style="border-radius:5px 5px 0px 0px; padding: 4px 6px 0 6px; border-bottom: none; display: flex; gap: 2px;" id="browser-tabs-container">
+        </div>
+
+        <div class="window-topbar blur-overlay" style="padding: 6px; background: rgba(255, 255, 255, 0.3); border-bottom: 1px solid rgba(0,0,0,0.15);">
+            <button class="menu-item" onclick="document.getElementById('browser-frame').src = document.getElementById('browser-frame').src">↻</button>
+            <input type="text" class="browser-url-bar" id="browser-url" value="https://www.google.com/webhp?igu=1" readonly>
+        </div>
+        
+        <div class="browser-bookmarks">
+            <button class="browser-bookmark" onclick="loadBrowserUrl('https://www.google.com/webhp?igu=1')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" style="width:14px;height:14px;">
+                <span>Google</span>
+            </button>
+            <button class="browser-bookmark" onclick="loadBrowserUrl('https://www.youtube.com/embed/')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" style="width:14px;height:14px;">
+                <span>YouTube</span>
+            </button>
+            <button class="browser-bookmark" onclick="loadBrowserUrl('https://frutigeraeroarchive.org/history')">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3NzU3Nzc3Nzc3Nzc3Nzc3Mjc3Ny83ODM1LS8wNTc3Nzc3NS01NTctNjg3OP/AABEIABwAHAMBEQACEQEDEQH/xAAbAAACAgMBAAAAAAAAAAAAAAAFBgMHAQIEAP/EADIQAAIBAgMGAwUJAAAAAAAAAAECAwQRAAUhBhITMUFRIoGhBxUyYZEUM0JxgrHR4fD/xAAZAQADAQEBAAAAAAAAAAAAAAACAwQFAQb/xAAiEQACAgICAgIDAAAAAAAAAAABAgADBBESISIxUfATMnH/2gAMAwEAAhEDEQA/APZ1nMOWBIyVM8guqnko7n+OuMiuvl/J5mig2nv1BXvgunFd6lh8W8rFAB+m2n53w8CoHUuFeMDx63NYdqEgcGWUzwE+K4G+g7i3MDtz+Z5HjVKf16g24iMPDoxpRldFdGDKwurA3BHfEszCNdGVJtdNU1u2VTTqWJ4iQoB0Fh/Z88aNSqtPIzdxlRMYOfjcs6mo46XK6VamjCQTzJFxUbibq/E28oFx4FbUXA5mwF8SVVgjlMyilW899xP9ovuijgMmUfZXed7b9PukDqdR/tcNoVms7PQlOIljXaYnQh72fTvU7LUplNzGWjB+QJt6aeWF5I1YZPnqFvOoD2uyaekz9c8pIxIki2e4JCPbdubdCPXBLaDVwMbTcr0GlvohnIszzcJHJNGrcNWEe7oNba28vU4ibIRPFTJ+BA1VFna+nr88zGFOE7SC4RR3PP8AYYpxb1AJ37lOE4o5cvcesgy1cnyimoVbeMS+Jh+Jibk/U4Gx+bFpHfabbC/zO8gMCGAIOhB64CKEiSliT7sFB2U6YX+FN7jlyLFGhMxwRRMWRAGPNuZ+uOqip0BFtYz+5Lg4E//Z" style="width:14px;height:14px;">
+                <span>Frutiger History</span>
+            </button>
+        </div>
+
+        <div class="window-body" style="border-radius:0px 0px 5px 5px; padding: 0;">
+            <div class="window-main">
+                <div class="window-content" style="padding: 0; display: flex;">
+                    <iframe id="browser-frame" class="browser-iframe" src="https://www.google.com/webhp?igu=1"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <div class="taskbar" id="taskbar">
         <div class="taskbar-bo blur-overlay"></div>
@@ -362,6 +413,7 @@
 
     <script src="script.js"></script>
     <script src="js/settings-app.js"></script>
+    <script src="js/browser-app.js"></script>
     <script src="js/note-app.js"></script>
     <script src="js/games-app.js"></script>
     <script src="js/mp-app.js"></script>

@@ -125,6 +125,7 @@ function updateTaskbar() {
         if (win.classList.contains("paint")) iconSrc = "./res/icons/app/paint.png";
         if (win.classList.contains("music")) iconSrc = "./res/icons/app/mediaplayer.webp";
         if (win.classList.contains("games")) iconSrc = "./res/icons/app/ybox.png";
+        if (win.classList.contains("browser")) iconSrc = "/res/icons/app/internet.ico";
 
         const btn = document.createElement("button");
         btn.className = "taskbar-item";
