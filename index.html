@@ -285,7 +285,7 @@
 
 
     <!--GAMES WINDOW-->
-    <div class="window games" style="display:flex; flex-direction: column;">
+    <div class="window games" style="display:none; flex-direction: column;">
         
         <div class="dragable-holder">
             <div class="aero-title">
@@ -295,7 +295,7 @@
             <div class="aero-controls">
                 <button class="control-btn min" aria-label="Minimize"></button>
                 <button style="display:none;" class="control-btn max" aria-label="Maximize"></button>
-                <button class="control-btn close" aria-label="Close"></button>
+                <button class="control-btn close" aria-label="Close" onclick="backToMain();"></button>
             </div>
         </div>
         
@@ -306,9 +306,7 @@
         </div>
 
         <div class="window-body" style="height: calc(100% - 50px); border-radius:0px 0px 5px 5px; background-color: #171717; overflow: hidden; display: flex; flex-direction: column;">
-            
-            <!-- MAIN GRID SECTION -->
-            <div class="window-main" id="games-section-main" style="display: none; flex-direction: column; height: 100%;">
+            <div class="window-main" id="games-section-main" style="display: flex; flex-direction: column; height: 100%;">
                 <div id="games-grid" style="overflow-y: auto; flex: 1;">
                     <!--games will be populated here-->
                 </div>

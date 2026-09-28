@@ -64,6 +64,11 @@ if (document.readyState === 'loading') {
     initGames();
 }
 
+function initGames(){
+    populateGames();
+    selectGame(currentIndex);
+}
+
 function populateGames(){
     const container = document.querySelector("#games-grid");
     container.innerHTML = "";
@@ -112,6 +117,7 @@ function startGame(){
     const iframe = document.querySelector("#active-game-iframe");
     const ruffleContainer = document.querySelector("#ruffle-container");
 
+    // Check if the source is a SWF file
     if (game.gameSrc.toLowerCase().endsWith('.swf')) {
         iframe.style.display = "none";
         ruffleContainer.style.display = "block";
@@ -130,9 +136,10 @@ function startGame(){
             allowScriptAccess: false
         });
     } else {
+        // Standard HTML5 iframe fallback
         ruffleContainer.style.display = "none";
         if (rufflePlayerInstance) {
-            ruffleContainer.innerHTML = ""; 
+            ruffleContainer.innerHTML = ""; // clear to stop audio
             rufflePlayerInstance = null;
         }
         iframe.style.display = "block";
@@ -140,35 +147,22 @@ function startGame(){
     }
 }
 
-function stopActiveGame() {
-    const iframe = document.querySelector("#active-game-iframe");
-    if (iframe) iframe.src = ""; 
-
-    const ruffleContainer = document.querySelector("#ruffle-container");
-    if (rufflePlayerInstance) {
-        ruffleContainer.innerHTML = ""; 
-        rufflePlayerInstance = null;
-    }
-}
-
-function initGames(){
-    populateGames();
-    selectGame(gamesCurrentIndex);
-
-    const closeBtn = document.querySelector(".window.games .control-btn.close");
-    if (closeBtn) {
-        closeBtn.addEventListener("click", () => {
-            stopActiveGame();
-            sectionMain.style.display = "flex";
-            sectionGame.style.display = "none";
-        });
-    }
-}
-
 function backToMain(){
     sectionMain.style.display = "flex";
     sectionGame.style.display = "none";
+    stopGame();
+    selectGame(currentIndex);
+}
+
+function stopGame() {
+    const iframe = document.querySelector("#active-game-iframe");
+    if (iframe) {
+        iframe.src = "";
+    }
     
-    stopActiveGame();
-    selectGame(gamesCurrentIndex);
+    const ruffleContainer = document.querySelector("#ruffle-container");
+    if (rufflePlayerInstance) {
+        ruffleContainer.innerHTML = "";
+        rufflePlayerInstance = null;
+    }
 }
