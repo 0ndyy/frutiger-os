@@ -23,8 +23,8 @@ You can check it out here - [CLICK TO OPEN DEMO](https://0ndyy.github.io/frutige
 - [x] **Notepad App** – Simple, working notepad application
 - [x] **Control Panel App** – Basically a settings app
 - [X] **Paint App**
-- [X] **Music App** (todo: more skins!)
-- [ ] **Authentic Playable Games**
+- [X] **Music App** ~~(todo: more skins!)~~
+- [X] **Authentic Playable Games**
 - [ ] **About Window**
 - [ ] **About Frutiger Aero Era Window**
 - [ ] **Web Browser**
