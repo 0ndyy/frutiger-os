@@ -1,5 +1,5 @@
 // --- PLAYLIST DATA ---
-const playlist = [
+var mpPlaylist = [
   { title: "California Gurls", artist: "Katy Perry (feat. Snoop Dogg)", length: "04:59", src: "../../audio/music/CaliforniaGurls.mp3" },
   { title: "CANYON.MID", artist: "George Stone", length: "2:01", src: "../../audio/music/canyon.mid.mp3" },
   { title: "Feel This Moment", artist: "Pitbull (feat. Christina Aguilera)", length: "03:50", src: "../../audio/music/FeelThisMoment.mp3" },
@@ -10,22 +10,18 @@ const playlist = [
   { title: "Zelda Overworld", artist: "Koji Kondo", length: "01:19", src: "../../audio/music/ZeldaOverworld.mp3" }
 ];
 
-const skins = [
+var mpSkins = [
   { name: "9SeriesDefault", width: "346px", height:"349px", holderWidth: "200px", holderHeight:"30px", holderTop: "0", holderLeft:"100px", source:"res/mp_skins/9SeriesDefault/index.html"},
   { name: "Pulsar", width: "347px", height:"319px", holderWidth: "150px", holderHeight:"80px", holderTop: "0", holderLeft:"0", source:"res/mp_skins/Pulsar/index.html"}
 ];
 
-
-
-let currentIndex = 0;
-const audio = new Audio();
-audio.volume = 0.5;
-
-
+var mpCurrentIndex = 0;
+var mpAudio = new Audio();
+mpAudio.volume = 0.5;
 
 document.addEventListener('DOMContentLoaded', () => {
   populatePlaylist();
-  loadTrack(currentIndex);
+  loadTrack(mpCurrentIndex);
   
   const volBar = document.querySelector('.mp-ui-volume-bar');
   const volFill = document.querySelector('.mp-ui-volume-fill');
@@ -35,21 +31,17 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-
-
-
-
 function populatePlaylist() {
   const screenContainer = document.querySelector('.mp-ui-screen');
   if (!screenContainer) return;
 
   screenContainer.innerHTML = ""; 
   
-  playlist.forEach((track, index) => {
+  mpPlaylist.forEach((track, index) => {
     const trackItem = document.createElement('div');
     trackItem.className = 'mp_9SeriesDefault_track-item'; 
     
-    if (index === currentIndex) {
+    if (index === mpCurrentIndex) {
       trackItem.style.backgroundColor = 'rgba(0, 255, 0, 0.2)';
     }
     
@@ -60,10 +52,10 @@ function populatePlaylist() {
     `;
     
     trackItem.onclick = () => {
-      currentIndex = index;
-      loadTrack(currentIndex);
-      audio.play();
-      updateStatusText(playlist[currentIndex].title.substring(0, 21).toUpperCase());
+      mpCurrentIndex = index;
+      loadTrack(mpCurrentIndex);
+      mpAudio.play();
+      updateStatusText(mpPlaylist[mpCurrentIndex].title.substring(0, 21).toUpperCase());
       populatePlaylist(); 
     };
     
@@ -72,8 +64,8 @@ function populatePlaylist() {
 }
 
 function loadTrack(index) {
-  audio.src = playlist[index].src;
-  audio.load();
+  mpAudio.src = mpPlaylist[index].src;
+  mpAudio.load();
   updateStatusText("READY");
   
   const seekBar = document.querySelector('.mp-ui-seek-bar');
@@ -84,56 +76,52 @@ function loadTrack(index) {
   }
 }
 
-
-
-
-
 function togglePlay() {
-  if (audio.paused) {
-      audio.play();
-      updateStatusText(playlist[currentIndex].title.substring(0, 21).toUpperCase());
+  if (mpAudio.paused) {
+      mpAudio.play();
+      updateStatusText(mpPlaylist[mpCurrentIndex].title.substring(0, 21).toUpperCase());
   } else {
-      audio.pause();
+      mpAudio.pause();
       updateStatusText("PAUSED");
   }
 }
 
 function stopAudio() {
-  audio.pause();
-  audio.currentTime = 0;
+  mpAudio.pause();
+  mpAudio.currentTime = 0;
   updateStatusText("STOPPED");
 }
 
 function nextTrack() {
-  currentIndex = (currentIndex + 1) % playlist.length;
-  loadTrack(currentIndex);
-  audio.play();
-  updateStatusText(playlist[currentIndex].title.substring(0, 21).toUpperCase());
+  mpCurrentIndex = (mpCurrentIndex + 1) % mpPlaylist.length;
+  loadTrack(mpCurrentIndex);
+  mpAudio.play();
+  updateStatusText(mpPlaylist[mpCurrentIndex].title.substring(0, 21).toUpperCase());
   populatePlaylist();
 }
 
 function prevTrack() {
-  currentIndex = (currentIndex - 1 + playlist.length) % playlist.length;
-  loadTrack(currentIndex);
-  audio.play();
-  updateStatusText(playlist[currentIndex].title.substring(0, 21).toUpperCase());
+  mpCurrentIndex = (mpCurrentIndex - 1 + mpPlaylist.length) % mpPlaylist.length;
+  loadTrack(mpCurrentIndex);
+  mpAudio.play();
+  updateStatusText(mpPlaylist[mpCurrentIndex].title.substring(0, 21).toUpperCase());
   populatePlaylist();
 }
 
 function toggleMute() {
-  audio.muted = !audio.muted;
-  updateStatusText(audio.muted ? "MUTED" : "UNMUTED");
+  mpAudio.muted = !mpAudio.muted;
+  updateStatusText(mpAudio.muted ? "MUTED" : "UNMUTED");
 }
 
-function rewindAudio() { audio.currentTime = Math.max(0, audio.currentTime - 5); }
-function ffwdAudio() { audio.currentTime = Math.min(audio.duration, audio.currentTime + 5); }
+function rewindAudio() { mpAudio.currentTime = Math.max(0, mpAudio.currentTime - 5); }
+function ffwdAudio() { mpAudio.currentTime = Math.min(mpAudio.duration, mpAudio.currentTime + 5); }
 
 function seekAudio(value) {
   const seekFill = document.querySelector('.mp-ui-seek-fill');
   const seekBar = document.querySelector('.mp-ui-seek-bar');
   updateSliderFill(seekBar, seekFill);
-  if (audio.duration) {
-    audio.currentTime = (value / 100) * audio.duration;
+  if (mpAudio.duration) {
+    mpAudio.currentTime = (value / 100) * mpAudio.duration;
   }
 }
 
@@ -141,11 +129,9 @@ function changeVolume(value) {
   const volFill = document.querySelector('.mp-ui-volume-fill');
   const volBar = document.querySelector('.mp-ui-volume-bar');
   updateSliderFill(volBar, volFill);
-  audio.volume = value / 100;
-  if (audio.muted && audio.volume > 0) audio.muted = false;
+  mpAudio.volume = value / 100;
+  if (mpAudio.muted && mpAudio.volume > 0) mpAudio.muted = false;
 }
-
-
 
 function updateStatusText(text) {
   const statusEl = document.querySelector('.mp-ui-status-text');
@@ -160,18 +146,16 @@ function updateSliderFill(slider, fillElem, overridePercent = null) {
   fillElem.style.width = `${percent}%`;
 }
 
-
-
-audio.addEventListener('timeupdate', () => {
+mpAudio.addEventListener('timeupdate', () => {
   const statusTime = document.querySelector('.mp-ui-status-time');
   if (statusTime) {
-      const m = Math.floor(audio.currentTime / 60);
-      const s = Math.floor(audio.currentTime % 60);
+      const m = Math.floor(mpAudio.currentTime / 60);
+      const s = Math.floor(mpAudio.currentTime % 60);
       statusTime.textContent = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
   }
   
-  if (audio.duration) {
-    const progressPercent = (audio.currentTime / audio.duration) * 100;
+  if (mpAudio.duration) {
+    const progressPercent = (mpAudio.currentTime / mpAudio.duration) * 100;
     const seekBar = document.querySelector('.mp-ui-seek-bar');
     const seekFill = document.querySelector('.mp-ui-seek-fill');
     if (seekBar && seekFill) {
@@ -181,18 +165,20 @@ audio.addEventListener('timeupdate', () => {
   }
 });
 
-audio.addEventListener('ended', nextTrack);
+mpAudio.addEventListener('ended', nextTrack);
 
 function mpChangeSkin(skinId){
-  _iframe = document.querySelector("#mp-update-iframe");
-  _holder = document.querySelector("#mp-update-holder");
+  let _iframe = document.querySelector("#mp-update-iframe");
+  let _holder = document.querySelector("#mp-update-holder");
 
-  _iframe.style.width = skins[skinId].width;
-  _iframe.style.height = skins[skinId].height;
-  _iframe.src = skins[skinId].source;
+  if(!_iframe || !_holder) return;
 
-  _holder.style.width = skins[skinId].holderWidth;
-  _holder.style.height = skins[skinId].holderHeight;
-  _holder.style.top = skins[skinId].holderTop;
-  _holder.style.left = skins[skinId].holderLeft;
+  _iframe.style.width = mpSkins[skinId].width;
+  _iframe.style.height = mpSkins[skinId].height;
+  _iframe.src = mpSkins[skinId].source;
+
+  _holder.style.width = mpSkins[skinId].holderWidth;
+  _holder.style.height = mpSkins[skinId].holderHeight;
+  _holder.style.top = mpSkins[skinId].holderTop;
+  _holder.style.left = mpSkins[skinId].holderLeft;
 }

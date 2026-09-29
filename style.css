@@ -939,9 +939,9 @@ input:checked + .toggleSwitch-slider:before {
 }
 
 #login-form {
-    display: flex;
+    position: relative;
+    display: inline-flex;
     align-items: center;
-    gap: 8px;
 }
 
 .login-password {
@@ -961,6 +961,8 @@ input:checked + .toggleSwitch-slider:before {
 }
 
 .login-submit {
+    position: absolute;
+    right: -40px; /* Pushes the button entirely outside the centered form container */
     background: linear-gradient(to bottom, #5ba8df 0%, #1b6da5 100%);
     color: white;
     border: 1px solid rgba(255,255,255,0.6);
