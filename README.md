@@ -25,9 +25,8 @@ You can check it out here - [CLICK TO OPEN DEMO](https://0ndyy.github.io/frutige
 - [X] **Paint App**
 - [X] **Music App** ~~(todo: more skins!)~~
 - [X] **Authentic Playable Games**
-- [ ] **About Window**
-- [ ] **About Frutiger Aero Era Window**
-- [ ] **Web Browser**
+- [X] **About Frutiger Aero Era Window** (inside browser)
+- [X] **Web Browser**
 - [ ] **Boot Animation**
 
 ... and more

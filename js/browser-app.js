@@ -1,5 +1,5 @@
 let browserTabs = [
-    { id: 1, url: "https://www.google.com/webhp?igu=1" }
+    { id: 1, url: "./res/oldgoogle.html", displayUrl: "https://www.google.com" }
 ];
 let currentBrowserTabId = 1;
 let tabIdCounter = 1;
@@ -43,11 +43,16 @@ function renderBrowserTabs() {
     }
 }
 
-function loadBrowserUrl(url) {
+function loadBrowserUrl(url, displayUrl) {
     document.getElementById('browser-frame').src = url;
-    document.getElementById('browser-url').value = url;
+    const finalDisplayUrl = displayUrl || url;
+    document.getElementById('browser-url').value = finalDisplayUrl;
+    
     const tab = browserTabs.find(t => t.id === currentBrowserTabId);
-    if (tab) tab.url = url;
+    if (tab) {
+        tab.url = url;
+        tab.displayUrl = finalDisplayUrl;
+    }
 }
 
 function switchBrowserTab(id) {
@@ -55,7 +60,7 @@ function switchBrowserTab(id) {
     const tab = browserTabs.find(t => t.id === id);
     if (tab) {
         document.getElementById('browser-frame').src = tab.url;
-        document.getElementById('browser-url').value = tab.url;
+        document.getElementById('browser-url').value = tab.displayUrl;
     }
     renderBrowserTabs();
 }
@@ -63,7 +68,7 @@ function switchBrowserTab(id) {
 function addBrowserTab() {
     if (browserTabs.length >= 5) return;
     tabIdCounter++;
-    const newTab = { id: tabIdCounter, url: "https://www.google.com/webhp?igu=1" };
+    const newTab = { id: tabIdCounter, url: "./res/oldgoogle.html", displayUrl: "https://www.google.com" };
     browserTabs.push(newTab);
     switchBrowserTab(newTab.id);
 }
