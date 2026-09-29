@@ -4,7 +4,29 @@
   <link rel="stylesheet" href="style.css">
   <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
 </head>
-<body style="background-image: url(./res/wp/wp1.jpg);">
+<body style="background-image: url(./res/wp/wp6.jpg);">
+    <!--BOOT ANIMATION-->
+    <div id="boot-sequence">
+        <div id="boot-screen">
+            <img src="./res/icons/hexagons/hexagons-BGT.png">
+            <p>Starting Hexagons</p>
+        </div>
+        
+        <div id="login-screen">
+            <img src="./res/user.png" class="login-avatar"></img>
+            <h2 class="login-username">User</h2>
+            
+            <form id="login-form" onsubmit="handleLogin(event)">
+                <input type="password" class="login-password" placeholder="Password">
+                <button type="submit" class="login-submit">➔</button>
+            </form>
+            
+            <div id="login-welcome">
+                <span class="login-spinner"></span> Welcome
+            </div>
+        </div>
+    </div>
+
     <!--MENUBAR-->
     <div class="menu-bar" id="menu-bar">
         <div class="blur-overlay menu-bar-bo"></div>
@@ -183,12 +205,12 @@
                     <hr style="border: 0; border-top: 1px solid #ddd; margin-bottom: 15px;">
                     
                     <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                        <button class="aero-btn" style="background-image: url('./res/wp/wp1.jpg'); background-size: cover; background-position: center; width: 120px; height: 75px;" onclick="changeWallpaper('./res/wp/wp1.jpg')"></button>
+                        <button class="aero-btn" style="background-image: url('./res/wp/wp6.jpg'); background-size: cover; background-position: center; width: 120px; height: 75px;" onclick="changeWallpaper('./res/wp/wp6.jpg')"></button>
                         <button class="aero-btn" style="background-image: url('./res/wp/wp2.jpg'); background-size: cover; background-position: center; width: 120px; height: 75px;" onclick="changeWallpaper('./res/wp/wp2.jpg')"></button>
                         <button class="aero-btn" style="background-image: url('./res/wp/wp3.jpg'); background-size: cover; background-position: center; width: 120px; height: 75px;" onclick="changeWallpaper('./res/wp/wp3.jpg')"></button>
                         <button class="aero-btn" style="background-image: url('./res/wp/wp4.jpg'); background-size: cover; background-position: center; width: 120px; height: 75px;" onclick="changeWallpaper('./res/wp/wp4.jpg')"></button>
                         <button class="aero-btn" style="background-image: url('./res/wp/wp5.jpg'); background-size: cover; background-position: center; width: 120px; height: 75px;" onclick="changeWallpaper('./res/wp/wp5.jpg')"></button>
-                        <button class="aero-btn" style="background-image: url('./res/wp/wp6.jpg'); background-size: cover; background-position: center; width: 120px; height: 75px;" onclick="changeWallpaper('./res/wp/wp6.jpg')"></button>
+                        <button class="aero-btn" style="background-image: url('./res/wp/wp1.jpg'); background-size: cover; background-position: center; width: 120px; height: 75px;" onclick="changeWallpaper('./res/wp/wp1.jpg')"></button>
                         <button class="aero-btn" style="background-image: url('./res/wp/wp7.jpg'); background-size: cover; background-position: center; width: 120px; height: 75px;" onclick="changeWallpaper('./res/wp/wp7.jpg')"></button>
                         <button class="aero-btn" style="background-image: url('./res/wp/wp8.jpg'); background-size: cover; background-position: center; width: 120px; height: 75px;" onclick="changeWallpaper('./res/wp/wp8.jpg')"></button>
                         <button class="aero-btn" style="background-image: url('./res/wp/wp9.jpg'); background-size: cover; background-position: center; width: 120px; height: 75px;" onclick="changeWallpaper('./res/wp/wp9.jpg')"></button>
@@ -410,7 +432,6 @@
         <div id="taskbar-items-container"></div>
     </div>
     
-
     <script src="script.js"></script>
     <script src="js/settings-app.js"></script>
     <script src="js/browser-app.js"></script>

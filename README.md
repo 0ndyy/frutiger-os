@@ -27,7 +27,7 @@ You can check it out here - [CLICK TO OPEN DEMO](https://0ndyy.github.io/frutige
 - [X] **Authentic Playable Games**
 - [X] **About Frutiger Aero Era Window** (inside browser)
 - [X] **Web Browser**
-- [ ] **Boot Animation**
+- [X] **Boot Animation**
 
 ... and more
 
