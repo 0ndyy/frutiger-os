@@ -1,5 +1,4 @@
 # Frutiger OS
-> **Status: Work In Progress (WIP)**
 
 A web-based operating system based on the infamous **Frutiger Aero** aesthetic of the mid 00s to early 10s.
 

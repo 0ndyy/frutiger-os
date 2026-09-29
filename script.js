@@ -204,6 +204,145 @@ updateTaskbar();
 
 
 
+document.addEventListener('DOMContentLoaded', () => {
+    const apps = document.querySelectorAll('.desktopApp');
+    const positions = [];
+    
+    apps.forEach(app => {
+        const rect = app.getBoundingClientRect();
+        positions.push({ left: rect.left, top: rect.top });
+    });
+    
+    apps.forEach((app, index) => {
+        app.style.left = positions[index].left + 'px';
+        app.style.top = positions[index].top + 'px';
+        app.classList.add('absolute');
+        
+        const originalOnClick = app.getAttribute('onclick');
+        if (originalOnClick) {
+            app.removeAttribute('onclick');
+            app.addEventListener('click', (e) => {
+                if (hasDraggedIcon) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                } else {
+                    new Function(originalOnClick).call(app);
+                }
+            });
+        }
+    });
+});
+
+let selectionBox = document.getElementById('selection-box');
+if (!selectionBox) {
+    selectionBox = document.createElement('div');
+    selectionBox.id = 'selection-box';
+    document.body.appendChild(selectionBox);
+}
+
+let isSelecting = false;
+let isDraggingIcon = false;
+let activeIcon = null;
+let startX, startY;
+let iconStartX, iconStartY;
+let hasDraggedIcon = false;
+
+document.addEventListener('mousedown', (e) => {
+    const clickedIcon = e.target.closest('.desktopApp');
+    if (clickedIcon) {
+        isDraggingIcon = true;
+        activeIcon = clickedIcon;
+        startX = e.clientX;
+        startY = e.clientY;
+        iconStartX = parseInt(clickedIcon.style.left || 0, 10);
+        iconStartY = parseInt(clickedIcon.style.top || 0, 10);
+        hasDraggedIcon = false;
+        
+        if (!clickedIcon.classList.contains('selected')) {
+            document.querySelectorAll('.desktopApp').forEach(a => a.classList.remove('selected'));
+        }
+        clickedIcon.classList.add('selected');
+        return;
+    }
+    
+    if (!e.target.closest('.window') && !e.target.closest('.taskbar') && !e.target.closest('.menu-bar')) {
+        isSelecting = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        
+        selectionBox.style.display = 'block';
+        selectionBox.style.left = startX + 'px';
+        selectionBox.style.top = startY + 'px';
+        selectionBox.style.width = '0px';
+        selectionBox.style.height = '0px';
+        
+        document.querySelectorAll('.desktopApp').forEach(app => app.classList.remove('selected'));
+    }
+});
+
+document.addEventListener('mousemove', (e) => {
+    if (isSelecting) {
+        const currentX = e.clientX;
+        const currentY = e.clientY;
+        
+        const left = Math.min(startX, currentX);
+        const top = Math.min(startY, currentY);
+        const width = Math.abs(currentX - startX);
+        const height = Math.abs(currentY - startY);
+        
+        selectionBox.style.left = left + 'px';
+        selectionBox.style.top = top + 'px';
+        selectionBox.style.width = width + 'px';
+        selectionBox.style.height = height + 'px';
+        
+        document.querySelectorAll('.desktopApp').forEach(app => {
+            const rect = app.getBoundingClientRect();
+            const isIntersecting = !(
+                rect.right < left ||
+                rect.left > left + width ||
+                rect.bottom < top ||
+                rect.top > top + height
+            );
+            
+            if (isIntersecting) {
+                app.classList.add('selected');
+            } else {
+                app.classList.remove('selected');
+            }
+        });
+    }
+    
+    if (isDraggingIcon && activeIcon) {
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        
+        if (Math.abs(dx) > 3 || Math.abs(dy) > 3) {
+            hasDraggedIcon = true;
+        }
+        
+        if (hasDraggedIcon) {
+            activeIcon.style.left = (iconStartX + dx) + 'px';
+            activeIcon.style.top = (iconStartY + dy) + 'px';
+        }
+    }
+});
+
+document.addEventListener('mouseup', () => {
+    if (isSelecting) {
+        isSelecting = false;
+        selectionBox.style.display = 'none';
+    }
+    if (isDraggingIcon) {
+        isDraggingIcon = false;
+        activeIcon = null;
+        setTimeout(() => { 
+            hasDraggedIcon = false; 
+        }, 100);
+    }
+});
+
+
+
 // BOOT
 const bootSound = new Audio('./res/audio/boot.mp3');
 const logonSound = new Audio('./res/audio/logon.mp3');
