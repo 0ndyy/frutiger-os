@@ -5,11 +5,14 @@ A web-based operating system based on the infamous **Frutiger Aero** aesthetic o
 You can check it out here - [CLICK TO OPEN DEMO](https://0ndyy.github.io/frutiger-os/)
 
 
-![Desktop View](/res/screenshot.png)
-*Overview of what the current version feels like*
+## Image Gallery
 
-![Control Panel Detail](/res/screenshot2.png)
-*Sneek peak ath the control panel design*
+<p align="center">
+  <img src="res/screenshot1.png" width="24%" alt="Screenshot 1" />
+  <img src="res/screenshot2.png" width="24%" alt="Screenshot 2" />
+  <img src="res/screenshot3.png" width="24%" alt="Screenshot 3" />
+  <img src="res/screenshot4.png" width="24%" alt="Screenshot 4" />
+</p>
 
 ---
 
