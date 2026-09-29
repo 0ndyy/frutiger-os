@@ -8,10 +8,11 @@ You can check it out here - [CLICK TO OPEN DEMO](https://0ndyy.github.io/frutige
 ## Image Gallery
 
 <p align="center">
-  <img src="res/screenshot1.png" width="24%" alt="Screenshot 1" />
-  <img src="res/screenshot2.png" width="24%" alt="Screenshot 2" />
-  <img src="res/screenshot3.png" width="24%" alt="Screenshot 3" />
-  <img src="res/screenshot4.png" width="24%" alt="Screenshot 4" />
+  <img src="res/screenshot1.png" width="20%" alt="Screenshot 1" />
+  <img src="res/screenshot2.png" width="20%" alt="Screenshot 2" />
+  <img src="res/screenshot3.png" width="20%" alt="Screenshot 3" />
+  <img src="res/screenshot4.png" width="20%" alt="Screenshot 4" />\
+  <img src="res/final.gif" width="20%" alt="Final Gif" />
 </p>
 
 ---
